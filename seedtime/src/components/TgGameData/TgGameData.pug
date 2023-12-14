@@ -1,0 +1,92 @@
+
+//- This Source Code Form is subject to the terms of the Mozilla Public
+//- License, v. 2.0. If a copy of the MPL was not distributed with this
+//- file, You can obtain one at http://mozilla.org/MPL/2.0/.
+//-
+//- Copyright (c) 2021-present Kaleidos Ventures SL
+
+form.project-setup(
+  no-validate
+  data-test='form'
+)
+  p.name {{ projectData.name }}
+
+  fieldset
+    label(for='gameName') {{ t('NAME_GAME') }}
+    input#gameName(
+      data-test='gameName'
+      type='text'
+      name='gameName'
+      v-model='gameName'
+      placeholder='ie: Sprint 1'
+      autofocus
+    )
+
+  fieldset
+    label(for='gameScale') {{ t('MEASUREMENT_SCALE') }}
+    select#gameScale(
+      data-test='selectScaleType'
+      name='selectScaleType'
+      v-model='selectScaleType'
+      v-on:change="clearSelectedScales"
+    )
+      option(
+        v-for='item in scalesTypes'
+        v-bind:value='item'
+        v-bind:key='item'
+      ) {{ t(`SCALE_${item.toUpperCase()}`) }}
+
+    .scale
+      input#paramsAll(
+        data-test='allScalesSelected'
+        type='checkbox'
+        name='allScales'
+        v-model='allScalesSelected'
+      )
+      label(for='paramsAll') {{ t('USE_ALL_VALUES') }}
+
+    .scale.params
+      .column(
+        v-for='item in scales[selectScaleType]'
+        v-bind:key='item.id'
+      )
+        label(v-bind:for='item.id')
+          input(
+            data-test='scalesSelected'
+            type='checkbox'
+            v-bind:id='item.id'
+            v-bind:name='item.id'
+            v-model='scalesSelected'
+            v-bind:value='item'
+          )
+          span {{ item.name }}
+
+  fieldset
+    label {{ t('TEAM_ROLES') }}
+    p {{ t('ROLES_INFO') }}
+
+    .roles
+      input#rolesAll(
+        data-test='allRolesSelected'
+        type='checkbox'
+        name='allRoles'
+        v-model='allRolesSelected'
+      )
+      label(for='rolesAll') {{ t('USE_ALL_VALUES') }}
+    .roles.params
+      .column(
+        v-for='item in roles'
+        v-bind:key='item.id'
+      )
+        label(v-bind:for='item.id')
+          input(
+            data-test='rolesSelected'
+            type='checkbox'
+            v-bind:id='item.id'
+            v-bind:name='item.id'
+            v-model='rolesSelected'
+            v-bind:value='item'
+          )
+          span {{ item.name }}
+
+  tg-next-step(data-test='nextStepComponent')

@@ -1,0 +1,22 @@
+
+//- This Source Code Form is subject to the terms of the Mozilla Public
+//- License, v. 2.0. If a copy of the MPL was not distributed with this
+//- file, You can obtain one at http://mozilla.org/MPL/2.0/.
+//-
+//- Copyright (c) 2021-present Kaleidos Ventures SL
+
+.nextstep
+  router-link.nextstep-back(
+    v-bind:to='{ name: backwardLink }'
+    v-bind:alt='t("BACK")'
+    v-bind:title='t("BACK")'
+  )
+    include ../../assets/images/back.svg
+    | {{ t('BACK') }}
+
+  router-link.nextstep-next.button-green(
+    v-bind:to='{ name: fordwardLink, params: params }'
+    v-bind:alt='t("CONTINUE")'
+    v-bind:title='t("CONTINUE")'
+    v-bind:class='{ disabled: isDisabled }'
+  ) {{ t('CONTINUE') }}

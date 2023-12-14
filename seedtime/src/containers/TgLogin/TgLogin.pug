@@ -1,0 +1,34 @@
+
+//- This Source Code Form is subject to the terms of the Mozilla Public
+//- License, v. 2.0. If a copy of the MPL was not distributed with this
+//- file, You can obtain one at http://mozilla.org/MPL/2.0/.
+//-
+//- Copyright (c) 2021-present Kaleidos Ventures SL
+
+.login
+  .wrapper
+    .container
+      .logo
+        include ../../assets/images/logo.svg
+
+      h1.title
+        | Taiga
+        strong Seed
+      h2.headline {{ t('LOGIN_SUBTITLE') }}
+
+      tg-button.button-green.go(
+        type='a'
+        v-bind:href='taigaLoginRoute'
+        v-bind:alt='t("LOGIN_TEXT")'
+        v-bind:title='t("LOGIN_TEXT")'
+      )
+        include ../../assets/images/taigaLogo.svg
+        | {{ t('LOGIN_TEXT') }}
+
+      tg-button.register(
+        type='a'
+        href='https://tree.taiga.io/register'
+        target='_blank'
+        v-bind:alt='t("NOT_REGISTERED")'
+        v-bind:title='t("NOT_REGISTERED")'
+      ) {{ t('NOT_REGISTERED') }}&nbsp;{{ t('CREATE_ACCOUNT') }}

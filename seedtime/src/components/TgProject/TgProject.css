@@ -1,0 +1,78 @@
+
+/*
+This Source Code Form is subject to the terms of the Mozilla Public
+License, v. 2.0. If a copy of the MPL was not distributed with this
+file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+Copyright (c) 2021-present Kaleidos Ventures SL
+*/
+
+@import '../../assets/css/colors';
+
+.project {
+  display: flex;
+  align-items: stretch;
+  flex-direction: column;
+  flex-grow: 1;
+
+  padding: 1rem;
+  line-height: 1.2rem;
+
+  color: var(--color-black);
+  background-color: var(--color-white);
+
+  border: 1px solid var(--color-mercury);
+  box-shadow: 4px 4px 0 0 color(var(--color-black) alpha(5%));
+
+  transition: background-color 160ms ease;
+
+  &:hover,
+  &--active {
+    background-color: color(var(--color-active) alpha(2%));
+  }
+
+  &--active {
+    border: 1px solid var(--color-active);
+    box-shadow: 4px 4px 0 0 color(var(--color-black) alpha(5%)), 0 0 0 1px color(var(--color-active));
+  }
+
+  &-header {
+    display: flex;
+    align-self: flex-start;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 48px;
+    margin-bottom: 1rem;
+    width: 100%;
+  }
+
+  &-img {
+    height: 3rem;
+    width: 3rem;
+
+    &--default {
+      background-color: var(--color-gray-stuff);
+    }
+  }
+
+  &-title {
+    display: flex;
+    align-self: center;
+    flex-grow: 1;
+    margin: 0 1rem;
+    font-size: initial;
+    font-weight: 700;
+  }
+
+  &-desc {
+    flex: 1;
+    font-size: initial;
+    color: var(--color-gray-stuff);
+  }
+
+  & .lock {
+    height: 1.5rem;
+    width: 1.5rem;
+    fill: var(--color-gray-stuff);
+  }
+}

@@ -1,0 +1,107 @@
+
+//- This Source Code Form is subject to the terms of the Mozilla Public
+//- License, v. 2.0. If a copy of the MPL was not distributed with this
+//- file, You can obtain one at http://mozilla.org/MPL/2.0/.
+//-
+//- Copyright (c) 2021-present Kaleidos Ventures SL
+
+.rules
+  h2
+    include ../../assets/images/rules.svg
+    | {{ t('RULES_TITLE') }}
+
+  h3 {{ t('PROJECT_TEXT') }}
+  ul
+    li
+      span {{ t('PROJECT_TEXT_1_1') }}
+        span.strong {{ t('PROJECT_TEXT_1_2') }}
+    li
+      span {{ t('PROJECT_TEXT_2_1') }}
+    li
+      span {{ t('PROJECT_TEXT_3_1') }}
+        span.strong {{ t('PROJECT_TEXT_3_2') }}
+    li
+      span {{ t('PROJECT_TEXT_4_1') }}
+
+  h3 {{ t('SCALES_ROLES_TEXT') }}
+  ul
+    li
+      span {{ t('SCALES_TEXT_1_1') }}
+        span.strong {{ t('SCALES_TEXT_1_2') }}
+        | {{ t('SCALES_TEXT_1_3') }}
+    li
+      span {{ t('SCALES_TEXT_2_1') }}
+        span.strong {{ t('SCALES_TEXT_2_2') }}
+        | {{ t('SCALES_TEXT_2_3') }}
+
+  h3 {{ t('SHARE_TEXT') }}
+  ul
+    li
+      span {{ t('SHARE_TEXT_1_1') }}
+        span.strong {{ t('SHARE_TEXT_1_2') }}
+        | {{ t('SHARE_TEXT_1_3') }}
+
+  h3 {{ t('ACTIONS_TEXT') }}
+  ul.icons
+    li
+      span
+        include ../../assets/images/shuffle.svg
+      span
+        span.strong {{ t('ACTIONS_TEXT_1_1') }}
+        | {{ t('ACTIONS_TEXT_1_2') }}
+    li
+      span
+        include ../../assets/images/not_now.svg
+      span
+        span.strong {{ t('ACTIONS_TEXT_2_1') }}
+        | {{ t('ACTIONS_TEXT_2_2') }}
+    li
+      span
+        include ../../assets/images/discard.svg
+      span
+        span.strong {{ t('ACTIONS_TEXT_3_1') }}
+        | {{ t('ACTIONS_TEXT_3_2') }}
+    li
+      span
+        include ../../assets/images/eye.svg
+      span
+        span.strong {{ t('ACTIONS_TEXT_4_1') }}
+        | {{ t('ACTIONS_TEXT_4_2') }}
+    li
+      span
+        include ../../assets/images/zoom.svg
+      span
+        span.strong {{ t('ACTIONS_TEXT_5_1') }}
+        | {{ t('ACTIONS_TEXT_5_2') }}
+
+  h3 {{ t('COLLATERAL_TEXT') }}
+  ul.icons
+    li
+      span
+        include ../../assets/images/lock.svg
+      span
+        span.strong {{ t('COLLATERAL_TEXT_1_1') }}
+        | {{ t('COLLATERAL_TEXT_1_2') }}
+    li
+      span
+        include ../../assets/images/add.svg
+      span
+        span.strong {{ t('COLLATERAL_TEXT_2_1') }}
+        | {{ t('COLLATERAL_TEXT_2_2') }}
+    li
+      span.points P.
+      span
+        span.strong {{ t('COLLATERAL_TEXT_3_1') }}
+        | {{ t('COLLATERAL_TEXT_3_2') }}
+    li
+      span
+        include ../../assets/images/estimation.svg
+      span
+        span.strong {{ t('COLLATERAL_TEXT_4_1') }}
+        | {{ t('COLLATERAL_TEXT_4_2') }}
+
+  h3 {{ t('END_TEXT') }}
+  p {{ t('END_TEXT_1_1') }}
+
+  tg-back-button
+

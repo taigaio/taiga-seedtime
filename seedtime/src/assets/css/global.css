@@ -1,0 +1,120 @@
+
+/*
+This Source Code Form is subject to the terms of the Mozilla Public
+License, v. 2.0. If a copy of the MPL was not distributed with this
+file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+Copyright (c) 2021-present Kaleidos Ventures SL
+*/
+
+@import './colors';
+@import './mixins';
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  height: auto;
+  overflow-y: scroll;
+}
+
+body {
+  font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+  color: var(--color-black);
+  font-size: 100%;
+  line-height: 1;
+  background-color: var(--color-soft-gray);
+}
+
+button {
+  font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+}
+
+label {
+  cursor: pointer;
+}
+
+input[type='text'],
+textarea,
+select {
+  padding: .75rem 1rem;
+
+  width: 100%;
+
+  font-family: 'Open Sans';
+  font-size: 1rem;
+
+  background-color: var(--color-white);
+  border: 1px solid var(--color-mercury);
+  color: var(--color-black);
+
+  box-shadow: 0 0 0 2px color(var(--color-black) alpha(03%));
+
+  &:focus {
+    border: 1px solid var(--color-active);
+    box-shadow: 0 0 0 2px color(var(--color-active) alpha(15%));
+  }
+
+  @nest .copy & {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url('assets/images/copy.svg');
+    background-position: right 1rem top 50%;
+    background-repeat: no-repeat;
+    background-size: 1.5rem;
+  }
+}
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url('assets/images/select-arrow.svg');
+  background-position: right 1rem top 50%;
+  background-repeat: no-repeat;
+  background-size: 1rem;
+}
+
+&::placeholder {
+  color: var(--color-text-modal);
+}
+
+input[type='radio'],
+input[type='checkbox'] {
+  height: 1rem;
+  margin: 0 .5rem;
+  width: 1rem;
+
+  font-size: .8rem;
+
+  cursor: pointer;
+
+  border: 1px solid;
+  border-radius: .1rem;
+
+  &:checked {
+    background: url('assets/images/checked.png') no-repeat 0 0 var(--color-bg-green);
+    border: none;
+  }
+}
+
+input[type='submit'] {
+  cursor: pointer;
+  border: none;
+}
+
+a {
+  color: var(--color-text-modal);
+}
+
+.description {
+  & p {
+    margin-bottom: .5rem;
+  }
+
+  & img {
+    max-width: 100%;
+  }
+}

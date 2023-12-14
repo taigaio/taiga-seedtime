@@ -1,0 +1,318 @@
+
+//- This Source Code Form is subject to the terms of the Mozilla Public
+//- License, v. 2.0. If a copy of the MPL was not distributed with this
+//- file, You can obtain one at http://mozilla.org/MPL/2.0/.
+//-
+//- Copyright (c) 2021-present Kaleidos Ventures SL
+
+.project-box
+  .name
+    .projectText(data-test='projectName') {{ projectData.name }}
+      span(data-test='projectNumUs') ({{ numUs }} {{ t('US') }})
+    .milestone-box(
+      v-if='getBacklog && milestone_us'
+      data-test='isMilestone'
+    )
+      input#milestone(
+        type='checkbox'
+        name='milestone'
+        v-model='milestone'
+        data-test='milestoneCheckbox'
+      )
+      label(for='milestone') {{ t('MILESTONE_TEXT') }}
+        span(data-test='milestoneNumUs') ({{ milestone_us }} {{ t('US') }})
+  .filters
+    .checkers
+      input#selectAll(
+        type='checkbox'
+        name='selectAll'
+        v-model='allUserStoriesSelected'
+        data-test='allUserStoriesSelected'
+      )
+      label(for='selectAll') {{ t('SELECT_ALL') }}
+        span(data-test='totalUsSelectedNum') ({{ totalUsSelected }})
+
+    .options
+      .statusesFilter(v-if="userStories.length")
+        transition(
+          name='fade'
+        )
+          tg-button.filter(
+            data-test='showStatusesModalButton'
+            type='button'
+            v-bind:alt='t("SHOW_STATUSES")'
+            v-bind:title='t("SHOW_STATUSES")'
+            v-on:click='showStatusesModal()'
+          ) {{ t('SHOW_STATUSES') }}
+
+        transition(
+          name='fade'
+        )
+          div.dropdown(
+            v-if="showStatuses"
+            data-test='statusesModal'
+          )
+            span.arrow
+            div(
+              v-if='statuses.length > 0'
+              data-test='statusesLength'
+            )
+              label.allStatuses(for='allStatuses')
+                input(
+                  type='checkbox'
+                  id='allStatuses'
+                  name='allStatuses'
+                  v-model='allStatusesSelected'
+                  data-test='allStatusesSelected'
+                )
+                span {{ t('SELECT_ALL') }}
+              ul.statuses(
+                data-test='statusesList'
+              )
+                li(v-for='status in statuses')
+                  label(v-bind:for='status.name')
+                    input(
+                      type='checkbox'
+                      v-bind:id='status.name'
+                      v-bind:name='status.name'
+                      v-model='pendingStatusesSelected'
+                      v-bind:value='status.id'
+                      v-bind:data-test='`statusCheckbox${status.id}`'
+                    )
+                    template(v-if='status.color')
+                      span.status(
+                        data-test='statusColor'
+                        v-bind:style='{ backgroundColor: status.color }'
+                      ) {{ status.name }}
+                    template(v-else)
+                      span.status(
+                        data-test='statusNoneColor'
+                        v-bind:style='{ filter: "invert(1)" }'
+                      ) {{ status.name }}
+              tg-button.button-green.save(
+                type='button'
+                v-bind:alt='t("SAVE")'
+                v-bind:title='t("SAVE")'
+                v-on:click='saveStatuses()'
+                v-bind:class='{ disabled: isDisabledStatusButton }'
+                data-test='saveStatusesButton'
+              )
+                span {{ t('SAVE') }}
+            p(
+              v-else
+              data-test='noStatuses'
+            ) {{ t('NO_STATUS') }}
+      .tagFilter(v-if="userStories.length")
+        transition(
+          name='fade'
+        )
+          tg-button.filter(
+            type='button'
+            v-bind:alt='t("SHOW_TAGS")'
+            v-bind:title='t("SHOW_TAGS")'
+            v-on:click='showTagsModal()'
+            data-test='showTagsModalButton'
+          ) {{ t('SHOW_TAGS') }}
+
+        transition(
+          name='fade'
+        )
+          div.dropdown(
+            v-if="showTags"
+            data-test='tagsModal'
+          )
+            span.arrow
+            div(
+              v-if='tags.length > 0'
+              data-test='tagsLength'
+            )
+              label.allTags(for='allTags')
+                input(
+                  type='checkbox'
+                  id='allTags'
+                  name='allTags'
+                  v-model='allTagsSelected'
+                  data-test='allTagsSelected'
+                )
+                span {{ t('SELECT_ALL') }}
+              ul.tags(
+                data-test='tagsList'
+              )
+                li(
+                  v-for='(tag, index) in tags'
+                  v-bind:key='index'
+                )
+                  label(v-bind:for='tag.name')
+                    input(
+                      type='checkbox'
+                      v-bind:id='tag.name'
+                      v-bind:name='tag.name'
+                      v-model='pendingTagsSelected'
+                      v-bind:value='tag.name'
+                      v-bind:data-test='`tagCheckbox${tag.name}`'
+                    )
+                    template(v-if='tag.color')
+                      span.tag(
+                        data-test='tagColor'
+                        v-bind:style='{ borderLeftColor: tag.color }'
+                      ) {{ tag.name }} {{ tag.id }}
+                    template(v-else)
+                      span.tag(data-test='tagNoneColor') {{ tag.name }}
+              tg-button.button-green.save(
+                type='button'
+                v-bind:alt='t("SAVE")'
+                v-bind:title='t("SAVE")'
+                v-on:click='saveTags()'
+                v-bind:class='{ disabled: isDisabledTagsButton }'
+                data-test='saveTagsButton'
+              )
+                span {{ t('SAVE') }}
+            p(
+              v-else
+              data-test='noTags'
+            ) {{ t('NO_TAGS') }}
+
+    ul.menu(
+      v-if='tagsSelected.length > 0 || statusesSelected.length > 0'
+      data-test='filterSelected'
+    )
+      li
+        tg-button.deleteAll(
+          type='button'
+          v-bind:alt='t("REMOVE_FILTERS")'
+          v-bind:title='t("REMOVE_FILTERS")'
+          v-on:click='removeAllFilters()'
+          data-test='removeAllFiltersButton'
+        ) {{ t('REMOVE_FILTERS') }}
+      li(
+        v-if='tagsSelectedList.length'
+        v-for='tag in tagsSelectedList'
+        v-bind:key='tag.name'
+        v-bind:data-test='`filterTagsSelected${tag.name}`'
+      )
+        span.tag(
+          v-if='tag.color'
+          v-bind:style='{ borderLeftColor: tag.color }'
+          data-test='filterTagColor'
+        ) {{ tag.name }}
+          tg-button.delete(
+            type='button'
+            v-bind:alt='t("REMOVE_FILTER")'
+            v-bind:title='t("REMOVE_FILTER")'
+            v-on:click='removeFilterTag(tag.name)'
+            data-test='removeFilterTagColor'
+          ) x
+        span.tag(
+          v-else
+          data-test='filterTagNoneColor'
+        ) {{ tag.name }}
+          tg-button.delete(
+            type='button'
+            v-bind:alt='t("REMOVE_FILTER")'
+            v-bind:title='t("REMOVE_FILTER")'
+            v-on:click='removeFilterTag(tag.name)'
+            data-test='removeFilterTagNoneColor'
+          ) x
+
+      li(
+        v-if='statusesSelectedList.length'
+        v-for='status in statusesSelectedList'
+        v-bind:key='status.id'
+        v-bind:data-test='`filterStatusSelected${status.id}`'
+      )
+        span.status(
+          v-if='status.color'
+          v-bind:style='{ backgroundColor: status.color }'
+          data-test='filterStatusColor'
+        ) {{ status.name }}
+          tg-button.delete(
+            type='button'
+            v-bind:alt='t("REMOVE_FILTERS")'
+            v-bind:title='t("REMOVE_FILTERS")'
+            v-on:click='removeFilterStatus(status.id)'
+            data-test='removeFilterStatusColor'
+          ) x
+        span.status(
+          v-else
+          v-bind:style='{ filter: "invert(1)", backgroundColor: "#000" }'
+          data-test='filterStatusNoneColor'
+        ) {{ status.name }}
+          tg-button.delete(
+            type='button'
+            v-bind:alt='t("REMOVE_FILTERS")'
+            v-bind:title='t("REMOVE_FILTERS")'
+            v-on:click='removeFilterStatus(status.id)'
+            data-test='removeFilterStatusNoneColor'
+          ) x
+
+  ul.project-list(
+    ref='us'
+    data-test='usList'
+  )
+    li.no-results(
+      v-if='!userStories.length'
+      data-test='usNoResults'
+    ) {{ t('NO_RESULTS' )}}
+    li(
+      v-else
+      v-for='us in userStories'
+      v-bind:key='us.id'
+      data-test='usResults'
+    )
+      label(v-bind:for='us.id')
+        input(
+          type='checkbox'
+          v-bind:id='us.id'
+          v-bind:name='us.id'
+          v-model='usSelected'
+          v-bind:value='us.id'
+          v-bind:data-test='`usCheckbox${us.id}`'
+        )
+        span # {{ us.ref }} {{ us.subject }}
+
+      ul.tags-list(
+        v-if='us.tags'
+        data-test='usTagsResults'
+      )
+        li(v-for='tag in us.tags')
+          template(
+            v-if='tag[1]'
+            data-test='TagResult'
+          )
+            span.tag(
+              v-bind:style='{ borderLeftColor: tag[1] }'
+            ) {{ tag[0] }}
+          template(
+            v-else
+            data-test='NoneTagResult'
+          )
+            span.tag {{ tag[0] }}
+
+      ul.statuses-list(
+        v-if='us.status_extra_info'
+        data-test='usStatusResults'
+      )
+        li(
+          v-bind:data-test='`ColorStatusResult${us.status_extra_info.name}`'
+        )
+          template(
+            v-if='us.status_extra_info.color'
+          )
+            span.status(
+              v-bind:style='{ backgroundColor: us.status_extra_info.color }'
+            ) {{ us.status_extra_info.name }}
+          template(
+            v-else
+          )
+            span.status(
+              v-bind:style='{ filter: "invert(1)" }'
+            ) {{ us.status_extra_info.name }}
+
+  span.spinner-wrap(
+    v-if='spinner'
+    data-test='spinner'
+  )
+    include ../../assets/images/spinner.svg
+
+  tg-next-step(data-test='TgNextStep')
+

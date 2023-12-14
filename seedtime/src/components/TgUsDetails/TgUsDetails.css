@@ -1,0 +1,235 @@
+
+/*
+This Source Code Form is subject to the terms of the Mozilla Public
+License, v. 2.0. If a copy of the MPL was not distributed with this
+file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+Copyright (c) 2021-present Kaleidos Ventures SL
+*/
+
+@import '../../assets/css/colors';
+@import '../../assets/css/mixins';
+@import '../../assets/css/animate';
+
+@apply --shadow;
+
+.usDetails {
+  position: relative;
+  margin: 0 auto;
+  padding: 1.5rem;
+  width: 40rem;
+  background-color: var(--color-white);
+
+  & .close {
+    position: absolute;
+    right: .5rem;
+    top: .5rem;
+    height: 2rem;
+    color: var(--color-white);
+    width: 2rem;
+
+    /*
+      pointer-events: none;
+    */
+
+    & svg {
+      fill: var(--color-white);
+    }
+  }
+
+  & .line {
+    padding: 1rem 0;
+    border-top: 1px solid var(--color-shadow-modal);
+  }
+
+  & .title {
+    display: flex;
+    padding: 1rem 0;
+    font-size: 1.37rem;
+    line-height: 1.5rem;
+    text-align: left;
+
+    & h3 {
+      margin-right: .5rem;
+      font-weight: 600;
+    }
+
+    & .titleWrap {
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    &.blocked {
+      color: color(var(--color-red) alpha(70%));
+
+      & svg {
+        align-self: flex-start;
+        margin: 0 .5rem;
+        width: 1.75rem;
+
+        & path {
+          fill: color(var(--color-red) alpha(70%));
+        }
+      }
+    }
+
+    & .text {
+      display: flex;
+      font-weight: 100;
+    }
+
+    & a {
+      display: block;
+      padding: .5rem 0;
+      font-size: .87rem;
+      color: var(--color-text-modal);
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    & .blockedReason {
+      font-size: .87rem;
+
+      & strong {
+        margin-right: .5rem;
+      }
+    }
+  }
+
+  & .estimate {
+    margin: 0;
+
+    & p {
+      color: inherit;
+      margin-bottom: 1rem;
+      font-size: .87rem;
+      font-weight: 600;
+    }
+  }
+
+  & .estimation-box {
+    justify-content: center;
+    margin: 0;
+    max-width: 100%;
+    padding: 0;
+    width: 100%;
+    border: none;
+  }
+
+  & .details {
+    & p,
+    & .description {
+      margin-bottom: 1rem;
+      font-size: .87rem;
+      line-height: 1rem;
+    }
+
+    & p {
+      font-weight: 600;
+    }
+
+    & .description {
+      margin-bottom: 0;
+    }
+  }
+
+  & .usAttachments {
+    display: flex;
+    flex-direction: column;
+
+    & span {
+      font-size: .8rem;
+      line-height: 1.2rem;
+    }
+  }
+
+  & .actions {
+    display: flex;
+    justify-content: flex-end;
+
+    & button {
+      display: flex;
+      justify-content: center;
+      margin-left: .5rem;
+      color: var(--color-text-modal);
+      border: 1px solid color(var(--color-text-modal) alpha(-50%));
+      box-shadow: 3px 3px 0 -1px color(var(--color-text-modal) alpha(-50%));
+
+      &:hover {
+        background-color: color(var(--color-soft-gray-2) alpha(30%));
+      }
+    }
+
+    & .discard:hover {
+      background-color: color(var(--color-red) alpha(10%));
+      border: 1px solid var(--color-red);
+
+      & span {
+        color: color(var(--color-red) alpha(60%));
+      }
+
+      & svg > g {
+        fill: color(var(--color-red) alpha(60%));
+      }
+    }
+  }
+
+  & svg {
+    height: auto;
+    margin-right: .5rem;
+    width: 1.2rem;
+  }
+
+  & .spinner-wrap {
+    display: flex;
+    justify-content: center;
+    margin: 1rem 0 0;
+
+    & svg {
+      width: 3rem;
+    }
+  }
+
+  & .blocking-wrap {
+    & p {
+      margin-bottom: .5rem;
+      font-size: .87rem;
+      font-weight: 600;
+      line-height: 1rem;
+    }
+
+    & textarea {
+      font-size: .8rem;
+      resize: none;
+      border: 1px solid var(--color-text-modal);
+    }
+
+    & .actions {
+      display: flex;
+      justify-content: space-between;
+      margin: 1rem 0;
+
+      & button {
+        margin: 0;
+        width: 49%;
+        border: none;
+
+        &.cancel {
+          background-color: color(var(--color-text-modal) alpha(30%));
+        }
+
+        &.button-green {
+          color: var(--color-white);
+
+          &:hover {
+            background-color: color(var(--color-text-modal) alpha(30%));
+            color: var(--color-text-modal);
+          }
+        }
+      }
+    }
+  }
+}

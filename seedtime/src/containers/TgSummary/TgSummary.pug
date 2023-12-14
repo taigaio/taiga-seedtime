@@ -1,0 +1,81 @@
+
+//- This Source Code Form is subject to the terms of the Mozilla Public
+//- License, v. 2.0. If a copy of the MPL was not distributed with this
+//- file, You can obtain one at http://mozilla.org/MPL/2.0/.
+//-
+//- Copyright (c) 2021-present Kaleidos Ventures SL
+
+.recap
+  header.header.block
+    h1.header-title {{ t('SEEDING_OVER') }}
+    p.header-subtitle {{ t('GO_TO_PROJECT') }}
+      tg-button(
+        type='a'
+        target='_blank'
+        v-bind:href='projectRoute'
+        v-bind:alt='`${t("TAIGA_PROJECT")} ${projectData.name}`'
+        v-bind:title='`${t("TAIGA_PROJECT")} ${projectData.name}`'
+      ) {{ projectData.name }}
+
+  tg-progress-bar
+
+  .block.graphic
+    .caption
+      .title {{ t('REAL_FEEDBACK') }}
+      .title {{ t('RELATIVE_FEEDBACK') }}
+    .graph
+      .row.scale
+        .cell(
+          v-for='(scale, index) in scales'
+          v-bind:key='scale.id'
+          v-bind:index='index'
+        ) {{ scale.name }}
+          span ({{ scale.cards.length }})
+
+      .row.cards
+        .cell(
+          v-for='(scale, index) in scales'
+          v-bind:key='scale.id'
+          v-bind:index='index'
+        )
+          template(v-if='scale.cards.length')
+            span.progress(
+              v-bind:style='{ height: `${ realScale(scale.cards.length) }%` }'
+            )
+          template(v-else)
+            span.progress(
+              v-bind:style='{ height: 0 }'
+            )
+
+      .row.relative
+        .cell(
+          v-for='(scale, index) in scales'
+          v-bind:key='scale.id'
+          v-bind:index='index'
+        )
+          template(v-if='scale.cards.length')
+            span.progress(
+              v-bind:style='{ height: `${ minHeightScale(scale.cards.length, index) }%` }'
+            )
+          template(v-else)
+            span.progress(
+              v-bind:style='{ height: 0 }'
+            )
+  tg-estimation-feedback(
+    place='summary'
+  )
+
+  .block.copy
+    h4 {{ t('GAME_LINK') }}
+    p {{ t('SHARE_LINK') }}
+      span.copied(
+        v-bind:class='{ show: copied }'
+      ) {{ t('COPY_LINK') }}
+
+    input#copyLink(
+      type='text'
+      v-model='gameUrl',
+      v-on:click='copy()'
+      ref='copyLink'
+      readonly
+    )

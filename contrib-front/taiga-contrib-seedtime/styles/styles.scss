@@ -1,0 +1,88 @@
+.backlog-table-header .backlog-table-title,
+.backlog-table-body .row {
+    .seedtime-points {
+        flex-basis: 10%;
+        flex-grow: 0;
+        text-align: right;
+        white-space: nowrap;
+    }
+}
+
+.ticket-data .seedtime-points {
+    background: $white;
+    color: $gray-light;
+    display: flex;
+    flex: 1;
+    justify-content: space-between;
+    margin-bottom: .1rem;
+    min-height: 2rem;
+    padding: .5rem 1rem;
+    position: relative;
+    .points {
+        color: $gray;
+    }
+    .seedtime-link {
+        color: $gray;
+        font-size: .9em;
+        &:hover {
+            color: $primary-light;
+        }
+    }
+}
+
+.seedtime-icon {
+    display: block;
+    svg {
+        height: 18px;
+        width: 18px;
+    }
+}
+
+.seedtime-link {
+    display: flex;
+    .seedtime-icon {
+        margin-left: 4px;
+    }
+}
+
+.seedtime-inline {
+    align-items: center;
+    display: flex;
+    margin-right: 5px;
+    .seedtime-separator {
+        font-size: .8rem;
+        margin: 0 5px;
+    }
+    .seedtime-icon {
+        display: flex;
+        margin-right: 3px;
+        svg {
+            height: 14px;
+            margin-bottom: .1rem;
+            width: 14px;
+        }
+    }
+}
+
+.taskboard-row-title-box .points-value span {
+    margin: initial;
+}
+
+.card-data {
+    flex-wrap: wrap;
+    width: 100%;
+}
+.card-statistics {
+    flex-grow: 1;
+    justify-content: flex-end;
+    margin-top: .3rem;
+}
+.card-estimation {
+    display: flex;
+    margin-top: .3rem;
+    white-space: nowrap;
+}
+.us-data .points-value {
+    display: flex;
+    white-space: nowrap;
+}

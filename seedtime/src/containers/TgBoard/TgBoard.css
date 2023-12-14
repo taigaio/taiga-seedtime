@@ -1,0 +1,121 @@
+
+/*
+This Source Code Form is subject to the terms of the Mozilla Public
+License, v. 2.0. If a copy of the MPL was not distributed with this
+file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+Copyright (c) 2021-present Kaleidos Ventures SL
+*/
+
+@import '../../assets/css/colors';
+
+.wrap {
+  overflow: hidden;
+}
+
+.board {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: stretch;
+  align-content: stretch;
+  justify-content: space-between;
+  height: 67vh;
+  max-height: 67vh;
+  overflow-x: scroll;
+  overflow-y: scroll;
+  width: 100vw;
+
+  & .scale {
+    margin: 0 .5rem;
+  }
+
+  & .title,
+  & .cards {
+    margin: 0 .5rem;
+    min-width: 19vw;
+    padding: .5rem;
+  }
+
+  & .title {
+    position: sticky;
+    top: 0;
+    z-index: 5;
+    padding: 1rem 0 .5rem;
+    font-size: 1.13rem;
+    font-weight: bold;
+    text-align: center;
+    color: var(--color-text-modal);
+    background-color: var(--color-soft-gray-2);
+    border-bottom: 4px solid color(var(--color-text-modal) alpha(25%));
+
+    &.fixed {
+      position: fixed;
+    }
+
+    & span {
+      margin-left: .25rem;
+      font-size: .87rem;
+      font-weight: normal;
+      color: var(--color-green-second-level);
+    }
+  }
+
+  & .cards {
+    height: 90%;
+    padding: .5rem .5rem 0;
+  }
+
+  &.zoom {
+    justify-content: center;
+    overflow: visible;
+    transform-origin: top left;
+
+    & .scale {
+      flex-grow: 1;
+      margin: 0;
+      max-height: 100%;
+      max-width: 20rem;
+    }
+
+    & .title,
+    & .cards {
+      margin: 0 5%;
+      min-width: auto;
+    }
+
+    & .cards {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      padding: .5rem 0;
+      align-content: center;
+    }
+  }
+}
+
+.dragme {
+  left: 30vw;
+  position: absolute;
+  z-index: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  overflow: hidden;
+  width: 40vw;
+  bottom: 30px;
+
+  & p {
+    margin-bottom: 2rem;
+    font-size: 1rem;
+    font-weight: 700;
+    text-align: center;
+    color: var(--color-green-second-level);
+  }
+
+  & img {
+    display: flex;
+    margin: 0 auto;
+    max-width: 25vw;
+  }
+}

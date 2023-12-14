@@ -1,0 +1,51 @@
+
+/*
+This Source Code Form is subject to the terms of the Mozilla Public
+License, v. 2.0. If a copy of the MPL was not distributed with this
+file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+Copyright (c) 2021-present Kaleidos Ventures SL
+*/
+
+@import '../../assets/css/colors';
+
+.wrapper {
+  justify-content: center;
+
+  height: 100vh;
+
+  background-color: var(--color-soft-gray-2);
+}
+
+.wrapper {
+  &,
+  & .container {
+    display: flex;
+    align-items: center;
+    flex-basis: 70%;
+
+    text-align: center;
+  }
+
+  & .container {
+    flex-direction: column;
+    justify-content: center;
+
+    width: 100%;
+
+    & #logo-svg {
+      width: 5rem;
+    }
+
+    & .title {
+      margin: 2rem 0;
+      font-size: 2rem;
+    }
+
+    & .description {
+      font-size: .9rem;
+      line-height: 1.2rem;
+      color: var(--color-text-modal);
+    }
+  }
+}

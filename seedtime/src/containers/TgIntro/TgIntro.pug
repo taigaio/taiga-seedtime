@@ -1,0 +1,30 @@
+
+//- This Source Code Form is subject to the terms of the Mozilla Public
+//- License, v. 2.0. If a copy of the MPL was not distributed with this
+//- file, You can obtain one at http://mozilla.org/MPL/2.0/.
+//-
+//- Copyright (c) 2021-present Kaleidos Ventures SL
+
+.intro
+  .wrap
+    h2
+      include ../../assets/images/rules.svg
+      span {{ t('INTRO_TEXT') }}
+    ol
+      li
+        span {{ t('INTRO_TEXT_1') }}
+      li
+        span {{ t('INTRO_TEXT_2') }}
+      li
+        span {{ t('INTRO_TEXT_3') }}
+      li
+        span {{ t('INTRO_TEXT_4') }}
+
+    router-link(
+      v-bind:to='{ name: "setupSelectProject" }',
+      v-bind:alt='t("INTRO_LINK")'
+    ) {{ t("INTRO_LINK") }}
+
+  .bg
+    include ../../assets/images/move_cards.svg
+

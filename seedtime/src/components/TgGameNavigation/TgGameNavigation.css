@@ -1,0 +1,59 @@
+
+/*
+This Source Code Form is subject to the terms of the Mozilla Public
+License, v. 2.0. If a copy of the MPL was not distributed with this
+file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+Copyright (c) 2021-present Kaleidos Ventures SL
+*/
+
+@import '../../assets/css/colors';
+
+.tabs {
+  left: 0;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  width: 100%;
+  background-color: color(var(--color-text-modal) lightness(85%));
+  border-top: 2px solid color(var(--color-text-modal) lightness(85%));
+
+  & a {
+    color: var(--color-text-modal);
+    display: flex;
+    align-items: center;
+    padding: .5rem 1.5rem;
+    font-size: .9rem;
+    background-color: var(--color-soft-gray-2);
+
+    &:hover {
+      background-color: color(var(--color-text-modal) lightness(80%));
+    }
+
+    &.summary,
+    &.router-link-active:not(.router-link-exact-active) {
+      background-color: color(var(--color-text-modal) lightness(85%));
+
+      &:hover {
+        background-color: color(var(--color-text-modal) lightness(80%));
+      }
+    }
+
+    &.router-link-exact-active {
+      z-index: 1;
+      font-weight: bold;
+      border-left: 1px solid var(--color-mercury);
+      border-right: 1px solid var(--color-mercury);
+      box-shadow: 3px 0 0 0 color(var(--color-text-modal) alpha(-50%));
+
+      &:hover {
+        background-color: var(--color-soft-gray-2);
+      }
+
+      &.summary {
+        background-color: var(--color-soft-gray);
+      }
+    }
+  }
+}

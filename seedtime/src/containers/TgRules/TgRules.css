@@ -1,0 +1,155 @@
+
+/*
+This Source Code Form is subject to the terms of the Mozilla Public
+License, v. 2.0. If a copy of the MPL was not distributed with this
+file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+Copyright (c) 2021-present Kaleidos Ventures SL
+*/
+
+@import '../../assets/css/colors';
+
+.rules {
+  display: flex;
+  flex-basis: 45%;
+  flex-direction: column;
+  padding: 2rem;
+  font-size: 1rem;
+  color: var(--color-black);
+
+  & h2 {
+    font-size: 2rem;
+    line-height: 3rem;
+
+    & svg {
+      width: 6rem;
+      vertical-align: middle;
+    }
+  }
+
+  & h3 {
+    margin-bottom: .5rem;
+    margin-left: 6.5rem;
+    font-size: 1.13rem;
+    font-weight: bold;
+    line-height: 2rem;
+    color: var(--color-text-modal);
+  }
+
+  & ul {
+    margin-bottom: 1.5rem;
+    margin-left: 7.7rem;
+    list-style: disc;
+
+    &.icons {
+      margin-left: 6.5rem;
+      list-style: none;
+
+      & li {
+        display: flex;
+
+        & > span {
+          margin-left: 1rem;
+        }
+
+        & > span:first-child {
+          height: 2.1rem;
+          margin-left: 0;
+          width: 2.1rem;
+          background-color: var(--color-white);
+        }
+      }
+
+      & .strong {
+        margin-left: 0;
+      }
+
+      & .points {
+        margin: 0;
+        padding: .3rem;
+        text-align: center;
+        color: var(--color-text-modal);
+      }
+    }
+
+    & li {
+      margin-bottom: .8rem;
+      color: var(--color-text-modal);
+      line-height: 1.5rem;
+
+      & svg {
+        height: 100%;
+        padding: .1rem;
+        width: 2rem;
+      }
+
+      & span {
+        color: var(--color-black);
+      }
+    }
+  }
+
+  & span.strong {
+    margin: 0 .3rem;
+    font-weight: bold;
+  }
+
+  & p {
+    margin-left: 6.5rem;
+    line-height: 1.5rem;
+  }
+
+  & a {
+    color: var(--color-text-modal);
+    align-self: flex-start;
+    justify-content: flex-start;
+    margin: 3rem 0 2rem 6rem;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+@media screen and (max-width: 1600px) {
+  .rules {
+    flex-basis: 60%;
+  }
+}
+
+@media screen and (max-width: 1300px) {
+  .rules {
+    flex-basis: 70%;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .rules {
+    flex-basis: 80%;
+  }
+}
+
+@media (max-width: 750px) {
+  .rules {
+    flex-basis: 90%;
+    padding: 1rem 0;
+
+    & h2 {
+      font-size: 1.8rem;
+    }
+
+    & h3,
+    & p,
+    & a {
+      margin-left: 1rem;
+    }
+
+    & ul {
+      margin-left: 2.5rem;
+
+      &.icons {
+        margin-left: 1rem;
+      }
+    }
+  }
+}

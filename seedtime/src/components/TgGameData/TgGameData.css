@@ -1,0 +1,89 @@
+
+/*
+This Source Code Form is subject to the terms of the Mozilla Public
+License, v. 2.0. If a copy of the MPL was not distributed with this
+file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+Copyright (c) 2021-present Kaleidos Ventures SL
+*/
+
+@import '../../assets/css/colors';
+
+.project-setup {
+  margin: 0 auto;
+
+  & fieldset {
+    display: flex;
+
+    flex-direction: column;
+
+    margin: .5rem auto;
+    padding: .5rem 0;
+
+    &:last-child {
+      padding-bottom: 0;
+      border: none;
+    }
+
+    & label {
+      margin-bottom: .75rem;
+      font-weight: 700;
+    }
+
+    & input[type='checkbox'] + label {
+      font-weight: 500;
+    }
+
+    & input[type='checkbox'] {
+      margin-left: 0;
+      vertical-align: sub;
+    }
+  }
+
+  & .scale,
+  & .roles {
+    margin: 1rem 0;
+  }
+
+  & .params {
+    display: flex;
+    flex-wrap: wrap;
+
+    & .column {
+      flex-grow: 1;
+      min-width: 25%;
+
+      & label {
+        display: inline-flex;
+
+        margin: -1px -1px 0 0;
+        padding: .75rem 1rem;
+        width: 100%;
+
+        font-weight: 500;
+        background-color: var(--color-white);
+
+        border: 1px solid var(--color-mercury);
+      }
+
+      & :hover {
+        background-color: color(var(--color-mercury) alpha(25%));
+      }
+
+      & input:not(:checked) + span {
+        color: var(--color-text-modal);
+      }
+    }
+  }
+
+  & p {
+    line-height: 1.3rem;
+    text-align: left;
+
+    &.name {
+      margin: 1rem 0;
+      color: var(--color-gray-stuff);
+      font-size: 1.13rem;
+    }
+  }
+}

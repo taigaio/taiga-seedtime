@@ -1,0 +1,74 @@
+
+/*
+This Source Code Form is subject to the terms of the Mozilla Public
+License, v. 2.0. If a copy of the MPL was not distributed with this
+file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+Copyright (c) 2021-present Kaleidos Ventures SL
+*/
+
+@import '../../assets/css/colors';
+
+.us-placed {
+  position: relative;
+  display: flex;
+  align-items: center;
+  align-self: flex-start;
+  flex-direction: row;
+  margin: 1.25rem;
+  max-width: 20rem;
+  width: 50%;
+  text-transform: lowercase;
+
+  & .title {
+    position: absolute;
+    z-index: 2;
+    width: 100%;
+    text-align: center;
+
+    & span {
+      margin-left: .5rem;
+      font-size: .8rem;
+    }
+  }
+
+  & .bar {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    height: 2rem;
+    width: 100%;
+    text-transform: lowercase;
+    background-color: color(var(--color-soft-gray-2) alpha(75%));
+
+    & .progress {
+      left: 0;
+      position: absolute;
+      z-index: 1;
+      height: 100%;
+      background-color: var(--color-active);
+    }
+  }
+
+  @nest .summary & {
+    flex-direction: column;
+    margin: 0;
+    max-width: inherit;
+    width: 100%;
+
+    & .title {
+      position: relative;
+      margin-bottom: .5rem;
+      text-align: start;
+
+      & span {
+        font-size: initial;
+        text-transform: initial;
+      }
+    }
+
+    & .bar {
+      height: 2.5rem;
+    }
+  }
+}

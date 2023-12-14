@@ -1,0 +1,125 @@
+
+//- This Source Code Form is subject to the terms of the Mozilla Public
+//- License, v. 2.0. If a copy of the MPL was not distributed with this
+//- file, You can obtain one at http://mozilla.org/MPL/2.0/.
+//-
+//- Copyright (c) 2021-present Kaleidos Ventures SL
+
+.usDetails
+  .title(
+    v-bind:class='{ blocked: userStory.is_blocked }'
+  )
+    h3 {{ `#${userStory.ref}` }}
+
+    .titleWrap
+      .text {{ userStory.subject }}
+        template(v-if='userStory.is_blocked')
+          include ../../assets/images/lock.svg
+
+      tg-button(
+        type='a'
+        v-bind:href='usRoute'
+        v-bind:alt='t("SHOW_IN_TAIGA")'
+        v-bind:title='t("SHOW_IN_TAIGA")'
+        target='_blank'
+      ) {{ t('SHOW_IN_TAIGA') }}
+
+      .blockedReason(
+        v-if='userStory.blocked_note'
+      )
+        strong {{ t('BLOCKED') }}
+        | {{ userStory.blocked_note }}
+
+  .estimate.line
+    p {{ userStory.total_points }} {{ t('STORY_POINTS') }}
+    tg-roles(
+      v-if='roles.length'
+      v-bind:user-story-id='currentUS'
+    )
+
+  .details.line
+    p {{ t('US_DETAILS_TITLE_LIST') }}
+    .description(v-html='userStory.description_html') {{ userStory.description_html }}
+
+  ul.usAttachments.line(
+    v-if='currentAttachments.length'
+  )
+    li(
+      v-for='attachment in currentAttachments'
+      v-bind:key='attachment.id'
+    )
+      tg-icon-base(
+        v-if=''
+        icon-name="attachment"
+        width="100%"
+        height="100%"
+      )
+        tg-icon-attachment
+
+      span {{ attachment.name }}
+
+  .actions.line(v-if='!isBlocking && !spinner')
+    tg-button.discard(
+      type='button'
+      v-bind:alt='t("DISCARD")'
+      v-bind:title='t("DISCARD_TEXT")'
+      v-on:click='discardUs()'
+    )
+      include ../../assets/images/discard.svg
+      span {{ t('DISCARD') }}
+
+    tg-button(
+      v-show='hasEditPermission() && !userStory.is_blocked'
+      type='button'
+      v-bind:alt='t("BLOCK")'
+      v-bind:title='t("BLOCK")'
+      v-on:click='blocking(true)'
+    )
+      include ../../assets/images/lock.svg
+      span {{ t('BLOCK') }}
+
+    tg-button(
+      v-show='hasEditPermission() && userStory.is_blocked'
+      type='button'
+      v-bind:alt='t("UNBLOCK")'
+      v-bind:title='t("UNBLOCK")'
+      v-on:click='unblockUs()'
+    )
+      include ../../assets/images/unlock.svg
+      span {{ t('UNBLOCK') }}
+
+  .blocking-wrap.line(v-if='isBlocking && !spinner')
+    p {{ t('BLOCKING_TEXT') }}
+    textarea(
+      name='blocked-reason'
+      cols='30'
+      rows='3'
+      v-bind:placeholder='t("REASON")'
+      v-model='blockedReason'
+    )
+    .actions
+      tg-button.cancel(
+        type='button'
+        v-bind:alt='t("CANCEL")'
+        v-bind:title='t("CANCEL")'
+        v-on:click='blocking(false)'
+      )
+        span {{ t('CANCEL') }}
+      tg-button.button-green(
+        type='button'
+        v-bind:alt='t("BLOCK")'
+        v-bind:title='t("BLOCK")'
+        v-on:click='blockUs()'
+      )
+        span {{ t('BLOCK') }}
+
+  .line(v-if='spinner')
+    span.spinner-wrap
+      include ../../assets/images/spinner.svg
+
+  button.close(
+    type='button'
+    v-on:click='closeModal()'
+    data-test='closeModal'
+  )
+    include ../../assets/images/discard.svg

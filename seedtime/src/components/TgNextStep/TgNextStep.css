@@ -1,0 +1,83 @@
+
+/*
+This Source Code Form is subject to the terms of the Mozilla Public
+License, v. 2.0. If a copy of the MPL was not distributed with this
+file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+Copyright (c) 2021-present Kaleidos Ventures SL
+*/
+
+@import '../../assets/css/colors';
+@import '../../assets/css/mixins';
+
+.nextstep {
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0;
+
+  &-next,
+  &-back {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+    padding: 1rem 3rem;
+    font-size: 1rem;
+    border-radius: .15rem;
+    transition: background-color .16s linear;
+
+    &.disabled {
+      @apply --disabled;
+    }
+  }
+
+  &-back {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+
+    color: var(--color-text-modal);
+
+    & svg {
+      height: 1rem;
+      margin-right: .5rem;
+      padding: 0;
+    }
+
+    &:hover {
+      background-color: color(var(--color-mercury) alpha(30%));
+    }
+  }
+
+  & .button-green {
+    background-color: var(--color-green);
+    color: var(--color-white);
+    box-shadow: 3px 3px 0 -1px color(var(--color-text-modal));
+
+    &:hover {
+      background-color: color(var(--color-green) blackness(40%));
+    }
+
+    &.disabled {
+      @apply --disabled;
+
+      box-shadow: 3px 3px 0 -1px color(var(--color-text-modal) alpha(-50%));
+    }
+  }
+}
+
+@media (max-width: 750px) {
+  a {
+    padding: 1rem 3rem;
+    width: 50%;
+    text-align: center;
+
+    &.nextstep-back {
+      background-color: color(var(--color-mercury) alpha(30%));
+    }
+  }
+
+  .resume .button-green {
+    width: 100%;
+  }
+}

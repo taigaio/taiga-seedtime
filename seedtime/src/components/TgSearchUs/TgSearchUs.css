@@ -1,0 +1,121 @@
+
+/*
+This Source Code Form is subject to the terms of the Mozilla Public
+License, v. 2.0. If a copy of the MPL was not distributed with this
+file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+Copyright (c) 2021-present Kaleidos Ventures SL
+*/
+
+@import '../../assets/css/colors';
+@import '../../assets/css/mixins';
+@import '../../assets/css/animate';
+
+.search-us {
+  left: 0;
+  position: fixed;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  max-width: 30rem;
+  overflow-y: auto;
+  background-color: var(--color-white);
+  border-left: 1px solid color(var(--color-text-modal) lightness(80%));
+  box-shadow: -4px 0 0 0 color(var(--color-bg-lighter));
+
+  & .header {
+    padding: 1rem;
+    border-bottom: 1px solid var(--color-mercury);
+
+    & .info {
+      display: flex;
+      align-items: center;
+      flex-direction: row;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+    }
+
+    & .title {
+      font-size: .9rem;
+      text-transform: uppercase;
+    }
+
+    & .filter {
+      display: flex;
+      flex-direction: column;
+    }
+
+    & .close {
+      padding: 0;
+      background-color: transparent;
+
+      & svg {
+        height: auto;
+        width: 1.3rem;
+        fill: var(--color-text-modal);
+      }
+    }
+  }
+
+  & .list {
+    flex: 1 1 auto;
+    overflow-y: auto;
+    padding: 0 1rem;
+  }
+
+  & .us {
+    @apply --cursor;
+
+    position: relative;
+    padding: 1rem 0;
+    line-height: 1.2rem;
+    border-bottom: 1px solid var(--color-mercury);
+
+    &:hover {
+      & .show {
+        display: block;
+      }
+    }
+
+    & .text {
+      padding-right: 0;
+      font-size: .87rem;
+
+      @apply --limit-text;
+
+      &.blocked {
+        color: color(var(--color-red) alpha(70%));
+      }
+
+      & .id {
+        margin-right: .3rem;
+      }
+    }
+
+    & .show {
+      position: absolute;
+      right: 0;
+      top: 0;
+      display: none;
+      height: 100%;
+      padding: 0 1rem;
+      pointer-events: auto;
+      background-color: color(var(--color-text-modal) alpha(75%));
+      border: none;
+
+      &:hover {
+        background-color: color(var(--color-text-modal) alpha(95%));
+      }
+
+      & svg {
+        width: 1.87rem;
+
+        & g {
+          stroke: var(--color-white);
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,41 @@
+
+/*
+This Source Code Form is subject to the terms of the Mozilla Public
+License, v. 2.0. If a copy of the MPL was not distributed with this
+file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+Copyright (c) 2021-present Kaleidos Ventures SL
+*/
+
+@import '../../assets/css/colors';
+
+.points-box {
+  position: absolute;
+  z-index: 100;
+  box-sizing: border-box;
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -10.2rem;
+  margin-top: 1rem;
+  width: 10rem;
+  border: 1px solid var(--color-mercury);
+
+  & li {
+    width: 25%;
+
+    & button {
+      padding: .5rem;
+      width: 100%;
+      text-align: center;
+      background-color: var(--color-white);
+    }
+
+    &:hover,
+    &.active {
+      & button {
+        color: var(--color-white);
+        background-color: var(--color-green);
+      }
+    }
+  }
+}

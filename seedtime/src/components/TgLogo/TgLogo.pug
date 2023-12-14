@@ -1,0 +1,27 @@
+
+//- This Source Code Form is subject to the terms of the Mozilla Public
+//- License, v. 2.0. If a copy of the MPL was not distributed with this
+//- file, You can obtain one at http://mozilla.org/MPL/2.0/.
+//-
+//- Copyright (c) 2021-present Kaleidos Ventures SL
+
+.navigation
+  .logo(
+    v-bind:class='{ game: isGame }'
+  )
+    h3(v-on:click='toggleMenu()')
+      include ../../assets/images/logo.svg
+      | TAIGA
+      strong.logo-context Seed
+      span(v-if='isGame') &rsaquo;
+
+    tg-button.new-game(
+      type='a'
+      v-bind:alt='t("NEW_ESTIMATION")'
+      v-bind:title='t("NEW_ESTIMATION")'
+      v-bind:class='{ showMenu: showMenu, hideMenu: !showMenu }'
+      href= '/'
+    ) {{ t("NEW_ESTIMATION") }}
+  template(v-if='isGame')
+    h4.logo-title {{ projectData.name }}
+    h4.logo-title {{ gameName }}

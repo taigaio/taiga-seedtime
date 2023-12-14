@@ -1,0 +1,56 @@
+
+//- This Source Code Form is subject to the terms of the Mozilla Public
+//- License, v. 2.0. If a copy of the MPL was not distributed with this
+//- file, You can obtain one at http://mozilla.org/MPL/2.0/.
+//-
+//- Copyright (c) 2021-present Kaleidos Ventures SL
+
+.search-us
+  .header
+    .info
+      h1.title {{ t('DECKS_US')}}
+      button.close(
+        type='button'
+        v-bind:alt='t("CLOSE_SEARCH")'
+        v-bind:title='t("CLOSE_SEARCH")'
+        v-on:click='close()'
+        data-test='closeButton'
+      )
+        include ../../assets/images/discard.svg
+
+    .filter
+      input(
+        type='text',
+        name='filter'
+        v-bind:placeholder='t("FILTER_BY_NAME")'
+        v-model='filterName'
+        data-test='filter'
+      )
+  draggable.list(
+      tag='ul'
+      v-model='filterUs'
+      v-on:add='onAdd'
+      data-name='search'
+      v-bind:disabled='true'
+      group='cards'
+      handle='li'
+  )
+    li.us(
+      v-for='userStory in filterUserStoryName'
+      v-bind:key='userStory.id'
+      v-bind:data-card-id='userStory.id'
+      data-test='userStoryList'
+    )
+      p.text(
+        v-bind:class='{ blocked: getUserStory(userStory.id).is_blocked }'
+      )
+        strong.id {{ `#${getUserStory(userStory.id).ref}` }}
+        | {{ getUserStory(userStory.id).subject }}
+      button.show(
+        type='button'
+        v-bind:alt='t("SHOW_USER_STORIES")'
+        v-bind:title='t("SHOW_USER_STORIES")'
+        v-on:click='open(userStory)'
+        data-test='openDetailButton'
+      )
+        include ../../assets/images/eye.svg

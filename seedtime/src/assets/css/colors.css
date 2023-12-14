@@ -1,0 +1,50 @@
+
+/*
+This Source Code Form is subject to the terms of the Mozilla Public
+License, v. 2.0. If a copy of the MPL was not distributed with this
+file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+Copyright (c) 2021-present Kaleidos Ventures SL
+*/
+
+:root {
+  --color-black: #2f2f2f;
+  --color-soft-gray: #f5f9f9;
+  --color-shadow-modal: #d6d5d5;
+  --color-text-modal: #628880;
+  --color-gray-stuff: #828282;
+  --color-green: #9bcb35;
+  --color-green-feedback: #e2f1c4;
+  --color-soft-gray-2: #e9f2f2;
+  --color-warning: #ff8082;
+  --color-green-second-level: #839e98;
+  --color-green-third-level: #628880;
+  --color-active: #81d4e3;
+  --color-text-green-dark: #60877f;
+
+  /* New colours from new Design */
+  --color-dark-green: #05586e;
+  --color-mercury: #e4e3e3;
+  --color-white: #fff;
+  --color-red: #f00;
+  --color-blue: #216d7e;
+  --color-gray: #f1f1f1;
+  --color-gray-light: #a4b7b3;
+  --color-bg-green: #045537;
+  --color-green-items: #72a114;
+  --color-bg-input: #f5f5f5;
+  --color-mercury-trans: rgba(228, 227, 227, 0);
+
+  /* modal */
+  --color-bg-black: rgba(0, 0, 0, .6);
+  --color-bg-lighter: rgba(0, 0, 0, .05);
+
+  /* feedback */
+  --color-percent-bg: #f8e7bb;
+  --color-percent-text: #e4ca87;
+  --color-task-bg: #d7ebf6;
+  --color-task-text: #9cbed1;
+  --color-breath-bg: #d4f4ec;
+  --color-breath-text: #9bdece;
+}
+

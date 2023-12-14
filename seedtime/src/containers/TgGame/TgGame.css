@@ -1,0 +1,78 @@
+
+/*
+This Source Code Form is subject to the terms of the Mozilla Public
+License, v. 2.0. If a copy of the MPL was not distributed with this
+file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+Copyright (c) 2021-present Kaleidos Ventures SL
+*/
+
+@import '../../assets/css/colors';
+
+.game {
+  min-height: 100vh;
+
+  &-header {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: flex-start;
+    flex-flow: row wrap;
+    justify-content: space-between;
+
+    width: 100%;
+
+    background-color: var(--color-white);
+    box-shadow: 0 1px 4px color(var(--color-black) alpha(10%));
+  }
+
+  &-body {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+  }
+
+  &-body.play {
+    position: relative;
+    z-index: 0;
+    background-color: var(--color-soft-gray-2);
+  }
+
+  &-footer {
+    &.play {
+      /* padding-bottom: 1rem; */
+      width: 100%;
+      background-color: color(var(--color-soft-gray));
+      border-top: 1px solid color(var(--color-text-modal) lightness(80%));
+    }
+  }
+}
+
+@media (max-width: 750px) {
+  .game-header {
+    & h1 {
+      order: 1;
+      width: 45%;
+    }
+
+    & .button {
+      order: 2;
+    }
+  }
+
+  .game-body {
+    display: block;
+    padding: 0 1rem;
+
+    &.play {
+      display: inherit;
+      margin: 0;
+      padding: 0;
+    }
+
+    &.intro {
+      margin: 0;
+      padding: 0;
+    }
+  }
+}

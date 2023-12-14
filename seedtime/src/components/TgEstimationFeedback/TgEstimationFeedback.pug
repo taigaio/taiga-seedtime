@@ -1,0 +1,86 @@
+
+//- This Source Code Form is subject to the terms of the Mozilla Public
+//- License, v. 2.0. If a copy of the MPL was not distributed with this
+//- file, You can obtain one at http://mozilla.org/MPL/2.0/.
+//-
+//- Copyright (c) 2021-present Kaleidos Ventures SL
+
+.feedback(
+  v-if='place === "summary"'
+  data-test='summary'
+)
+  template(v-if='getFeedback === "small"')
+    .wrap-image(data-test='summarySmall')
+      include ../../assets/images/feedback/small.svg
+    .text
+      h4 {{ t('FEEDBACK_TITLE_SMALL') }}
+      P {{ t('FEEDBACK_TEXT_SMALL') }}
+      P {{ t('FEEDBACK_RECOMENDATION') }}
+  template(v-else-if='getFeedback === "medium"')
+    .wrap-image(data-test='summaryMedium')
+      include ../../assets/images/feedback/medium.svg
+    .text
+      h4 {{ t('FEEDBACK_TITLE_MEDIUM') }}
+      P {{ t('FEEDBACK_TEXT_MEDIUM') }}
+      P {{ t('FEEDBACK_RECOMENDATION') }}
+  template(v-else-if='getFeedback === "big"')
+    .wrap-image(data-test='summaryBig')
+      include ../../assets/images/feedback/big.svg
+    .text
+      h4 {{ t('FEEDBACK_TITLE_BIG') }}
+      P {{ t('FEEDBACK_TEXT_BIG') }}
+      P {{ t('FEEDBACK_RECOMENDATION') }}
+  template(v-else-if='getFeedback === "small_medium"')
+    .wrap-image(data-test='summarySmallMedium')
+      include ../../assets/images/feedback/small_medium.svg
+    .text
+      h4 {{ t('FEEDBACK_TITLE_SMALL_MEDIUM') }}
+      P {{ t('FEEDBACK_TEXT_SMALL_MEDIUM') }}
+      P {{ t('FEEDBACK_RECOMENDATION') }}
+  template(v-else-if='getFeedback === "small_big"')
+    .wrap-image(data-test='summarySmallBig')
+      include ../../assets/images/feedback/small_big.svg
+    .text
+      h4 {{ t('FEEDBACK_TITLE_SMALL_BIG') }}
+      P {{ t('FEEDBACK_TEXT_SMALL_BIG') }}
+      P {{ t('FEEDBACK_RECOMENDATION') }}
+  template(v-else-if='getFeedback === "medium_big"')
+    .wrap-image(data-test='summaryMediumBig')
+      include ../../assets/images/feedback/medium_big.svg
+    .text
+      h4 {{ t('FEEDBACK_TITLE_MEDIUM_BIG') }}
+      P {{ t('FEEDBACK_TEXT_MEDIUM_BIG') }}
+      P {{ t('FEEDBACK_RECOMENDATION') }}
+  template(v-else-if='getFeedback === "equilibrate"')
+    .wrap-image(data-test='summaryEquilibrate')
+      include ../../assets/images/feedback/equilibrate.svg
+    .text
+      h4 {{ t('FEEDBACK_TITLE_EQUILIBRATE') }}
+      P {{ t('FEEDBACK_TEXT_EQUILIBRATE') }}
+      P {{ t('FEEDBACK_RECOMENDATION') }}
+.feedbackCard(
+  data-test='boardModal'
+  v-else-if='modalOpen && isBoardFeedback()'
+  v-bind:class='`task_${getFeedback}`'
+)
+  .col.left
+    .icon
+  .col.title
+    h4 {{ t(`TASK_${getFeedback.toUpperCase()}_TITLE`) }}
+      template(v-if='getFeedback === "big"')
+        include ../../assets/images/feedback/task_big_logo.svg
+      template(v-if='getFeedback === "medium"')
+        include ../../assets/images/feedback/task_medium_logo.svg
+      template(v-if='getFeedback === "small"')
+        include ../../assets/images/feedback/task_small_logo.svg
+    p {{ t(`TASK_${getFeedback.toUpperCase()}_TEXT`) }}
+  .col.right
+    tg-button.close(
+      type='button'
+      v-bind:alt='t("CLOSE")'
+      v-bind:title='t("CLOSE")'
+      v-on:click='closeModal()'
+      data-test='closeBoardModal'
+    )
+      include ../../assets/images/discard.svg
+    .icon

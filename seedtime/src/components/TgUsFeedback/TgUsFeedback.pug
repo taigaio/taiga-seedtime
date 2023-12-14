@@ -1,0 +1,42 @@
+
+//- This Source Code Form is subject to the terms of the Mozilla Public
+//- License, v. 2.0. If a copy of the MPL was not distributed with this
+//- file, You can obtain one at http://mozilla.org/MPL/2.0/.
+//-
+//- Copyright (c) 2021-present Kaleidos Ventures SL
+
+div(
+  v-if='type'
+)
+  template(
+    v-if='!checkEstimation'
+  )
+    div(
+      v-bind:class='[type, "cardFeedback", "slideUp"]'
+    )
+      .col.left
+        .icon
+      .col.title
+        h4 {{ t(`${type.toUpperCase()}_TITLE`) }}
+          template(v-if='type === "percent_50"')
+            include ../../assets/images/feedback/percent_50_logo.svg
+          template(v-if='type === "percent_100"')
+            include ../../assets/images/feedback/percent_100_logo.svg
+          template(v-if='type === "breathe"')
+            include ../../assets/images/feedback/breathe_logo.svg
+        p {{ t(`${type.toUpperCase()}_TEXT`) }}
+      .col.right
+        tg-button.close(
+          type='button'
+          v-bind:alt='t("CLOSE")'
+          v-bind:title='t("CLOSE")'
+          v-on:click='closeModal()'
+        )
+          include ../../assets/images/discard.svg
+        .icon
+
+  template(v-else)
+    tg-estimation-feedback(
+      place='board'
+      v-bind:class='[type, "cardFeedback", "slideUp"]'
+    )

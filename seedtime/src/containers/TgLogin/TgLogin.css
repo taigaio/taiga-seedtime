@@ -1,0 +1,121 @@
+
+/*
+This Source Code Form is subject to the terms of the Mozilla Public
+License, v. 2.0. If a copy of the MPL was not distributed with this
+file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+Copyright (c) 2021-present Kaleidos Ventures SL
+*/
+
+@import '../../assets/css/colors';
+
+.login {
+  height: 100%;
+  min-height: 100vh;
+
+  background-image: url('../../assets/images/login_bg.jpg');
+  background-position: center 60%;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.wrapper {
+  justify-content: center;
+
+  height: 100%;
+  min-height: 100vh;
+  padding: 1rem 0;
+
+  background-color: color(var(--color-dark-green) alpha(86%));
+}
+
+.wrapper {
+  &,
+  & .register {
+    color: var(--color-white);
+  }
+
+  &,
+  & .container {
+    display: flex;
+
+    align-items: center;
+  }
+
+  & .container {
+    flex-direction: column;
+    justify-content: center;
+
+    width: 100%;
+
+    & #logo-svg {
+      margin: 0 .5rem;
+      width: 7rem;
+    }
+
+    & #taigaLogo-svg {
+      & path {
+        fill: var(--color-green-items);
+      }
+    }
+
+    & .title {
+      padding: 1rem;
+
+      font-size: 3rem;
+      font-weight: 100;
+
+      text-shadow: 3px 2px 4px color(var(--color-black) alpha(20%));
+
+      & .strong {
+        margin-left: .5rem;
+      }
+    }
+
+    & .headline {
+      font-size: 1.2rem;
+
+      text-shadow: 2px 2px 4px color(var(--color-black) alpha(10%));
+    }
+
+    & .go {
+      align-items: center;
+      margin: 3rem 0;
+      min-width: 15rem;
+      padding: 1rem;
+
+      font-weight: 700;
+      line-height: 1.5rem;
+      text-align: center;
+      text-shadow: 1px 1px 2px color(var(--color-black) alpha(10%));
+      text-transform: uppercase;
+      box-shadow: 0 2px 2px 1px color(var(--color-black) alpha(10%));
+
+      & #taigaLogo-svg {
+        margin-right: .2rem;
+        width: 1.5rem;
+
+        & path {
+          opacity: .7;
+          fill: var(--color-bg-input);
+        }
+      }
+    }
+
+    & .register {
+      font-size: .9rem;
+      line-height: 1.5rem;
+      opacity: .5;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+@media (max-width: 414px) {
+  .wrapper .container .title {
+    font-size: 2rem;
+  }
+}

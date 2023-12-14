@@ -1,0 +1,79 @@
+
+/*
+This Source Code Form is subject to the terms of the Mozilla Public
+License, v. 2.0. If a copy of the MPL was not distributed with this
+file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+Copyright (c) 2021-present Kaleidos Ventures SL
+*/
+
+@import '../../assets/css/colors';
+@import '../../assets/css/animate';
+
+.estimation-box {
+  position: relative;
+  box-sizing: border-box;
+  align-self: center;
+  flex-wrap: nowrap;
+  margin-right: 1rem;
+  margin-top: 1rem;
+  padding: 1rem 0;
+  box-shadow: 5px 5px 0 0 color(var(--color-text-modal) alpha(-50%));
+
+  @nest .usDetails & {
+    box-shadow: none;
+  }
+}
+
+.estimation {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  border: 1px solid var(--color-soft-gray);
+
+  @nest .usDetails & {
+    flex-wrap: nowrap;
+    border: none;
+  }
+
+  & li {
+    box-sizing: border-box;
+    margin-left: -1px;
+    width: 4.5rem;
+    text-align: center;
+    background-color: var(--color-white);
+    box-shadow: 2px 2px 0 0 color(var(--color-text-modal) alpha(-70%));
+
+    & button {
+      padding: .5rem;
+      width: 100%;
+      text-align: center;
+      color: var(--color-black);
+      border: 1px solid var(--color-mercury);
+
+      &.selected,
+      &:hover {
+        background-color: var(--color-white);
+      }
+    }
+
+    &:last-child {
+      border: none;
+    }
+
+    & .title {
+      margin-bottom: .5rem;
+      overflow: hidden;
+      font-size: .7rem;
+      font-weight: 400;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      pointer-events: none;
+    }
+
+    & .number {
+      font-size: 1rem;
+      pointer-events: none;
+    }
+  }
+}

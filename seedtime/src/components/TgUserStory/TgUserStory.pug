@@ -1,0 +1,46 @@
+
+//- This Source Code Form is subject to the terms of the Mozilla Public
+//- License, v. 2.0. If a copy of the MPL was not distributed with this
+//- file, You can obtain one at http://mozilla.org/MPL/2.0/.
+//-
+//- Copyright (c) 2021-present Kaleidos Ventures SL
+
+.card(
+  v-if='info'
+  v-click-outside='close'
+  v-bind:class='{ selected: selected }'
+  v-bind:data-card-id='info.id'
+)
+  .wrap
+    .title
+      p.text(v-bind:class='{ blocked: info.is_blocked }')
+        strong.id {{ `#${info.ref}` }}
+        span.text {{ info.subject }}
+      .blocked-icon(v-if='info.is_blocked')
+        include ../../assets/images/lock.svg
+    .description(
+      v-if='selected'
+      v-html='info.description_html'
+    ) {{ info.description_html }}
+    .actions
+      button.points(
+        type='button'
+        v-bind:alt='t("EDIT_ROLES")'
+        v-bind:title='t("EDIT_ROLES")'
+        v-on:click='toggleRoles()'
+      )
+        strong {{ info.total_points || 0 }}
+        | {{ t('POINTS') }}
+      button.edit(
+        type='button'
+        v-bind:alt='t("US_DETAIL")'
+        v-bind:title='t("US_DETAIL")'
+        v-on:click='openUs(info)'
+      )
+        include ../../assets/images/eye.svg
+  transition(name='fade')
+    tg-roles(
+      v-if='showRoles && roles.length'
+      v-bind:user-story-id='card.id'
+    )
+.card(v-else) {{ t('NO_CARD') }}

@@ -1,0 +1,29 @@
+
+//- This Source Code Form is subject to the terms of the Mozilla Public
+//- License, v. 2.0. If a copy of the MPL was not distributed with this
+//- file, You can obtain one at http://mozilla.org/MPL/2.0/.
+//-
+//- Copyright (c) 2021-present Kaleidos Ventures SL
+
+tg-button.project(
+  type='button'
+  v-on:click='selectProject()'
+  v-bind:class='{ "project--active": isActive() }'
+)
+  header.project-header
+    figure
+      template(v-if='logo')
+        img.project-img(
+          v-bind:src='logo'
+          v-bind:alt='name'
+        )
+      template(v-else)
+        img.project-img.project-img--default(
+          v-bind:src='defaultImage.src'
+          v-bind:alt='name'
+          v-bind:style='`background-color: ${defaultImage.color}`'
+        )
+    h3.project-title {{ name }}
+    span.lock(v-if='private')
+      include ../../assets/images/lock.svg
+  p.project-desc {{ description }}

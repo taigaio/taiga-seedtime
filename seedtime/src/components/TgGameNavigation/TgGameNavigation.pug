@@ -1,0 +1,21 @@
+
+//- This Source Code Form is subject to the terms of the Mozilla Public
+//- License, v. 2.0. If a copy of the MPL was not distributed with this
+//- file, You can obtain one at http://mozilla.org/MPL/2.0/.
+//-
+//- Copyright (c) 2021-present Kaleidos Ventures SL
+
+.tabs
+  router-link.game(
+    data-test='linkGame'
+    v-bind:to='{ name: "play", params: { projectSlug: getProjectData.slug, gameUUID: getGameUUID } }',
+    v-bind:alt='t("ESTIMATION_ROOM")',
+    v-bind:title='t("ESTIMATION_ROOM")'
+  ) {{ t("ESTIMATION_ROOM") }}
+
+  router-link.summary(
+    data-test='linkSummary'
+    v-bind:to='{ name: "summary", params: { projectSlug: getProjectData.slug, gameUUID: getGameUUID } }',
+    v-bind:alt='t("SUMMARY")',
+    v-bind:title='t("SUMMARY")'
+  ) {{ t("SUMMARY") }}

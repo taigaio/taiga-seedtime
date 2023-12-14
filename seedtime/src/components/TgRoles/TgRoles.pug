@@ -1,0 +1,33 @@
+
+//- This Source Code Form is subject to the terms of the Mozilla Public
+//- License, v. 2.0. If a copy of the MPL was not distributed with this
+//- file, You can obtain one at http://mozilla.org/MPL/2.0/.
+//-
+//- Copyright (c) 2021-present Kaleidos Ventures SL
+
+.estimation-box(ref='estimation')
+  ul.estimation(
+    v-click-outside='close'
+  )
+    li(
+      v-for='role in roles'
+      v-bind:key='role.id'
+    )
+      button(
+        type='button'
+        v-bind:alt='role.name'
+        v-bind:title='role.name'
+        v-on:click='togglePoints(role.id, $event)'
+      )
+        .title {{ role.name }}
+        .number {{ point(role.id) }}
+
+  transition(name='fade')
+    tg-points(
+      v-if='showPoints.show'
+      ref='tgPointBox'
+      v-bind:points='points'
+      v-bind:position='showPoints.position'
+      v-bind:role-id='showPoints.roleId'
+      v-bind:user-story-id='userStoryId'
+    )

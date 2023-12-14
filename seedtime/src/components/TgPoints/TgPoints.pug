@@ -1,0 +1,22 @@
+
+//- This Source Code Form is subject to the terms of the Mozilla Public
+//- License, v. 2.0. If a copy of the MPL was not distributed with this
+//- file, You can obtain one at http://mozilla.org/MPL/2.0/.
+//-
+//- Copyright (c) 2021-present Kaleidos Ventures SL
+
+ul.points-box(
+  ref='points'
+  v-bind:style='{ left: `${position.left}px`, top: `${positionTop}px` }'
+)
+  li(
+    v-for='point in points'
+    v-bind:class='{ active: pointSelected === point.id }'
+    v-bind:key='point.id'
+  )
+    tg-button(
+      type='button'
+      v-bind:alt='point.name'
+      v-bind:title='point.name'
+      v-on:click='vote(point.id)'
+    ) {{ point.name }}

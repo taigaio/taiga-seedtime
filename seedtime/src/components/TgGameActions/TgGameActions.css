@@ -1,0 +1,135 @@
+
+/*
+This Source Code Form is subject to the terms of the Mozilla Public
+License, v. 2.0. If a copy of the MPL was not distributed with this
+file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+Copyright (c) 2021-present Kaleidos Ventures SL
+*/
+
+@import '../../assets/css/colors';
+@import '../../assets/css/animate';
+
+.actions {
+  display: flex;
+  align-self: center;
+  flex-grow: 1;
+  justify-content: flex-end;
+  padding: .25rem 0;
+  background-color: var(--color-white);
+}
+
+.zoomButton,
+.estimateButton {
+  display: flex;
+  align-self: center;
+  justify-content: flex-end;
+  margin-left: 1.5rem;
+
+  & .button {
+    z-index: 10;
+    padding: .2rem;
+    width: 2.5rem;
+    border: 1px solid color(var(--color-text-modal) alpha(-50%));
+    box-shadow: 2px 2px 0 -1px color(var(--color-text-modal) alpha(-50%));
+  }
+
+  & .button:active,
+  & .button.active {
+    background-color: var(--color-soft-gray);
+    border-left: 2px solid color(var(--color-text-modal) alpha(-50%));
+    border-top: 2px solid color(var(--color-text-modal) alpha(-50%));
+    box-shadow: none;
+  }
+
+  & .button.inactive {
+    border: 1px solid color(var(--color-gray-light) alpha(-50%));
+    box-shadow: 2px 2px 0 -1px color(var(--color-gray-light) alpha(-50%));
+
+    & svg g {
+      fill: color(var(--color-gray-light) alpha(-50%));
+    }
+  }
+
+  & svg {
+    width: 100%;
+  }
+}
+
+.modalConfirm {
+  position: absolute;
+  top: -150px;
+  z-index: -1;
+  display: flex;
+  flex-direction: column;
+  margin: .5rem .5rem 0 0;
+  padding: 1rem;
+  width: 17rem;
+  background-color: var(--color-white);
+  box-shadow: 0 3px 4px color(var(--color-shadow-modal));
+  transition: .5s ease-in;
+
+  &::after,
+  &::before {
+    left: 66%;
+    position: absolute;
+    bottom: 100%;
+    height: 0;
+    width: 0;
+    content: " ";
+    pointer-events: none;
+    border: solid transparent;
+    border-color: var(--color-mercury-trans);
+  }
+
+  &::before {
+    margin-left: 0;
+    border-bottom-color: var(--color-mercury);
+    border-width: .55rem;
+  }
+
+  &::after {
+    margin-left: .1rem;
+    border-bottom-color: var(--color-white);
+    border-width: .45rem;
+  }
+
+  &.showModal {
+    top: 100%;
+    transition: .3s ease-out;
+  }
+
+  &.hideModal {
+    top: -150px;
+    transition: .5s ease-in;
+  }
+
+  & p {
+    font-size: .87rem;
+    line-height: 1.1rem;
+  }
+
+  & .actions {
+    margin: 1rem 1rem 0;
+    width: 100%;
+  }
+
+  & .button {
+    flex-grow: 1;
+    width: auto;
+    border: none;
+
+    &.button-green:hover {
+      background-color: color(var(--color-green) blackness(40%));
+    }
+
+    &.cancel {
+      color: var(--color-text-modal);
+      box-shadow: none;
+
+      &:hover {
+        background-color: color(var(--color-mercury) alpha(30%));
+      }
+    }
+  }
+}

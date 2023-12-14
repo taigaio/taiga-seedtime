@@ -1,0 +1,229 @@
+
+/*
+This Source Code Form is subject to the terms of the Mozilla Public
+License, v. 2.0. If a copy of the MPL was not distributed with this
+file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+Copyright (c) 2021-present Kaleidos Ventures SL
+*/
+
+@import '../../assets/css/colors';
+@import '../../assets/css/mixins';
+@import '../../assets/css/animate';
+
+.card {
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  margin-bottom: .75rem;
+  padding: .5rem;
+  width: 100%;
+  font-size: .8rem;
+  line-height: 1.1rem;
+
+  @apply --cursor;
+
+  background-color: var(--color-white);
+  border-radius: .3rem;
+  box-shadow: 2px 2px 0 0 color(var(--color-text-modal) alpha(-50%));
+
+  & .wrap {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: space-between;
+    pointer-events: none;
+
+    & .title {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: .5rem;
+    }
+
+    &.blocked-icon {
+      display: none;
+    }
+  }
+
+  & .text {
+    font-size: .8rem;
+    font-weight: bold;
+    color: var(--color-black);
+    overflow-wrap: break-word;
+
+    & .id {
+      margin-right: .3rem;
+      font-size: inherit;
+      white-space: nowrap;
+    }
+
+    &.blocked,
+    &.blocked .text {
+      color: color(var(--color-red) alpha(70%));
+    }
+  }
+
+  & svg {
+    display: none;
+  }
+
+  & .estimation-box {
+    left: 0;
+    position: absolute;
+    background: var(--color-white);
+    top: 100%;
+    z-index: 10;
+    margin: 0;
+    padding: .5rem;
+    width: 100%;
+    border: 1px solid var(--color-text-modal);
+
+    & .estimation {
+      justify-content: center;
+    }
+  }
+
+  &.selected {
+    z-index: 10;
+    height: 96%;
+    margin: 0;
+    padding: 1rem;
+    line-height: 1.4;
+    border: 1px solid var(--color-text-modal);
+    box-shadow: 0 2px 0 0 color(var(--color-text-modal) alpha(30%));
+
+    & .blocked-icon {
+      & svg {
+        display: block;
+        margin-left: .5rem;
+        width: 1.1rem;
+        fill: color(var(--color-red) alpha(70%));
+      }
+    }
+
+    & .text {
+      font-size: 1rem;
+      line-height: 1.3rem;
+      text-overflow: ellipsis;
+
+      & .id {
+        margin-right: .5rem;
+        font-size: 1.5rem;
+      }
+    }
+
+    & .description {
+      flex-shrink: 4;
+      margin-bottom: .5rem;
+      max-height: 6rem;
+      max-width: 18rem;
+      overflow: hidden;
+      font-size: .87rem;
+
+      & p {
+        color: var(--color-gray-stuff);
+      }
+    }
+
+    & .actions {
+      align-items: flex-end;
+    }
+
+    & .estimation-box {
+      left: -100%;
+      top: auto;
+      bottom: 0;
+    }
+  }
+
+  &:hover {
+    & .actions .edit {
+      visibility: visible;
+
+      & svg {
+        display: inline;
+      }
+    }
+  }
+
+  & .points {
+    display: block;
+    margin: 0;
+    padding: 0;
+    font-size: initial;
+    text-transform: lowercase;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background: none;
+    color: var(--color-text-modal);
+
+    & strong {
+      margin-right: .3rem;
+    }
+  }
+
+  & div.points {
+    cursor: inherit;
+  }
+
+  & .actions {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    flex-grow: 1;
+    justify-content: space-between;
+    pointer-events: auto;
+
+    & .edit {
+      display: flex;
+      padding: 0;
+      visibility: hidden;
+
+      & svg {
+        height: auto;
+        width: 1.4rem;
+      }
+    }
+  }
+
+  @nest .scale & {
+    & .text {
+      font-size: .87rem;
+      font-weight: 500;
+    }
+
+    & .actions .points {
+      font-size: .87rem;
+    }
+
+    & .actions .edit svg {
+      width: 1.2rem;
+    }
+
+    @nest .zoom & {
+      align-self: center;
+      margin: 0 2% .75rem;
+      padding: .2rem;
+      width: calc(((100vw / 12) / 3) - .4rem);
+
+      & .title {
+        justify-content: center;
+        margin: 0;
+      }
+
+      & .actions,
+      & .text .text {
+        display: none;
+      }
+
+      & .id {
+        margin: 0;
+        font-size: .76rem;
+        font-weight: 600;
+      }
+    }
+  }
+}

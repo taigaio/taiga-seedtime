@@ -1,0 +1,56 @@
+
+//- This Source Code Form is subject to the terms of the Mozilla Public
+//- License, v. 2.0. If a copy of the MPL was not distributed with this
+//- file, You can obtain one at http://mozilla.org/MPL/2.0/.
+//-
+//- Copyright (c) 2021-present Kaleidos Ventures SL
+
+.wrap
+  .board(
+    ref='title'
+    data-test='board'
+  )
+    tg-events(
+      v-bind:subscribe-to='eventsSubscriptions'
+      v-on:process-events-message='processEventsMessage'
+      data-test='tgEvents'
+    )
+    .scale(
+      v-if='scales'
+      v-for='scale in scales'
+      v-bind:key='scale.id'
+      data-test='scales'
+    )
+      .title(
+        v-if='scale.cards'
+        v-bind:data-test='`scale${scale.name}`'
+      ) {{ scale.name }}
+        span ({{ scale.cards.length }})
+
+      draggable.cards(
+        v-bind:for='scale.id'
+        v-bind:id='scale.id'
+        v-bind:index='scale.id'
+        v-bind:scale='scale'
+        v-bind:class='{ "empty": !scale.cards }'
+        v-on:add='onAdd'
+        data-name='scale'
+        group='cards'
+        data-test='draggable'
+      )
+        tg-user-story(
+          v-for='card in scale.cards'
+          v-bind:key='card.id'
+          v-bind:card='card'
+          v-bind:scaleId='scale.id'
+        )
+
+  .dragme(
+    v-if='emptyBoard'
+    data-test='emptyBoard'
+  )
+    p {{ t('DRAG_STORIES') }}
+    img(
+      v-bind:alt='t("DRAG_STORIES")'
+      src='../../assets/images/dragme.png'
+    )

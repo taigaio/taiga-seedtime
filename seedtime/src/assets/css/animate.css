@@ -1,0 +1,117 @@
+
+/*
+This Source Code Form is subject to the terms of the Mozilla Public
+License, v. 2.0. If a copy of the MPL was not distributed with this
+file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+Copyright (c) 2021-present Kaleidos Ventures SL
+*/
+
+@keyframes showModal {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.animatedModal {
+  animation-fill-mode: both;
+  animation-duration: .5s;
+}
+
+.showModal {
+  animation-name: showModal;
+}
+
+@keyframes hideModal {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+.hideModal {
+  animation-name: hideModal;
+}
+
+@keyframes rotate {
+  50% {
+    transform: rotate(360deg);
+  }
+}
+
+.spinner {
+  animation: rotate 1.5s cubic-bezier(0, .05, .87, 1.04) infinite alternate;
+  animation-timing-function: ease-in-out;
+  transform-origin: center center;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity .5s;
+}
+
+.fade-enter,
+.fade-leave-to /* .fade-leave-active in <2.1.8 */ {
+  opacity: 0;
+}
+
+.slide-fade-enter-active {
+  transition: all .3s ease;
+}
+
+.slide-fade-leave-active {
+  transition: all .3s cubic-bezier(1, .5, .8, 1);
+}
+
+.slide-fade-enter,
+.slide-fade-leave-to
+/* .slide-fade-leave-active for <2.1.8 */ {
+  opacity: 0;
+  transform: translateX(-10px);
+}
+
+@keyframes shake {
+  10%,
+  90% {
+    transform: rotate(-2deg);
+  }
+
+  20%,
+  80% {
+    transform: rotate(2deg);
+  }
+
+  30%,
+  50%,
+  70% {
+    transform: rotate(-2deg);
+  }
+
+  40%,
+  60% {
+    transform: rotate(2deg);
+  }
+}
+
+@keyframes slideUp {
+  0% {
+    top: 0;
+  }
+
+  100% {
+    top: -105%;
+  }
+}
+
+.slideUp {
+  animation: shake .82s cubic-bezier(.36, .07, .19, .97) .5s both, slideUp 2s cubic-bezier(.22, .61, .36, 1) 1.3s 1 normal forwards;
+  transform: translate3d(0, 0, 0);
+  transform-origin: center;
+}

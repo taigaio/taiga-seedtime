@@ -1,0 +1,26 @@
+
+/*
+This Source Code Form is subject to the terms of the Mozilla Public
+License, v. 2.0. If a copy of the MPL was not distributed with this
+file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+Copyright (c) 2021-present Kaleidos Ventures SL
+*/
+
+@import '../../assets/css/colors';
+
+.title {
+  /* margin-bottom: 1rem; */
+  text-align: center;
+
+  &-title {
+    padding: 0 0 1rem;
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 750px) {
+  .title-title {
+    font-size: 1.8rem;
+  }
+}

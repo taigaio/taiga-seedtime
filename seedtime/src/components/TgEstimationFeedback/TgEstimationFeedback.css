@@ -1,0 +1,91 @@
+
+/*
+This Source Code Form is subject to the terms of the Mozilla Public
+License, v. 2.0. If a copy of the MPL was not distributed with this
+file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+Copyright (c) 2021-present Kaleidos Ventures SL
+*/
+
+@import '../../assets/css/colors';
+
+.feedback {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  padding: 0 0 1rem;
+  width: 100%;
+
+  & .wrap-image {
+    display: flex;
+    flex-grow: 1;
+    justify-content: flex-end;
+    margin-right: 2rem;
+    max-height: 8rem;
+    width: 50%;
+
+    & svg {
+      width: 16rem;
+    }
+  }
+
+  & .text {
+    align-self: center;
+    flex-grow: 1;
+    margin: 1rem 0;
+
+    & h4 {
+      margin-bottom: .5rem;
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+
+    & p {
+      font-size: .9rem;
+      line-height: 1.5rem;
+    }
+  }
+}
+
+.feedbackCard {
+  display: flex;
+
+  & h4 {
+    margin-bottom: .5rem;
+    line-height: 1.4rem;
+  }
+
+  &.task_big {
+    & svg {
+      width: 5rem;
+    }
+
+    & .icon {
+      background-image: url('../../assets/images/feedback/task_big_icon.svg');
+    }
+  }
+
+  &.task_medium {
+    & svg {
+      width: 7.5rem;
+    }
+
+    & .icon {
+      background-image: url('../../assets/images/feedback/task_medium_icon.svg');
+    }
+  }
+
+  &.task_small {
+    & svg {
+      width: 3.5rem;
+    }
+
+    & .icon {
+      background-image: url('../../assets/images/feedback/task_small_icon.svg');
+    }
+  }
+
+  & .close svg {
+    width: .87rem;
+  }
+}

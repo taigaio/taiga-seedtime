@@ -1,0 +1,106 @@
+
+/*
+This Source Code Form is subject to the terms of the Mozilla Public
+License, v. 2.0. If a copy of the MPL was not distributed with this
+file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+Copyright (c) 2021-present Kaleidos Ventures SL
+*/
+
+@import '../../assets/css/colors';
+@import '../../assets/css/animate';
+
+.user {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  order: 2;
+  min-width: 12rem;
+
+  & .username {
+    position: relative;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    text-indent: .5rem;
+    cursor: pointer;
+    background-color: var(--color-white);
+    box-shadow: -5px 0 0 color(var(--color-white) alpha(100%));
+  }
+
+  &-image {
+    height: 3rem;
+    margin-left: 1rem;
+    width: 3rem;
+    background-color: var(--color-white);
+  }
+
+  & a {
+    display: block;
+    padding: 1rem 0;
+    border-top: 1px solid color(var(--color-black) alpha(5%));
+    color: var(--color-text-modal);
+
+    &:first-child {
+      border-top: none;
+    }
+  }
+}
+
+.menu {
+  position: absolute;
+  top: -150px;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  margin: .5rem .5rem 0 0;
+  min-width: 100%;
+  background-color: var(--color-white);
+  box-shadow: 0 3px 4px color(var(--color-shadow-modal));
+  transition: .5s ease-in;
+
+  & li {
+    padding: 0 1rem;
+    width: 100%;
+
+    &:hover {
+      background-color: var(--color-soft-gray);
+    }
+  }
+
+  &.showMenu {
+    top: 100%;
+    transition: .3s ease-out;
+  }
+
+  &.hideMenu {
+    top: -150px;
+    transition: .5s ease-in;
+  }
+
+  &::after,
+  &::before {
+    left: 50%;
+    position: absolute;
+    bottom: 100%;
+    height: 0;
+    width: 0;
+    content: " ";
+    pointer-events: none;
+    border: solid transparent;
+    border-color: var(--color-mercury-trans);
+  }
+
+  &::before {
+    margin-left: 0;
+    border-bottom-color: var(--color-mercury);
+    border-width: .55rem;
+  }
+
+  &::after {
+    margin-left: .1rem;
+    border-bottom-color: var(--color-white);
+    border-width: .45rem;
+  }
+}

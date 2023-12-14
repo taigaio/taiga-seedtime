@@ -1,0 +1,19 @@
+
+//- This Source Code Form is subject to the terms of the Mozilla Public
+//- License, v. 2.0. If a copy of the MPL was not distributed with this
+//- file, You can obtain one at http://mozilla.org/MPL/2.0/.
+//-
+//- Copyright (c) 2021-present Kaleidos Ventures SL
+
+.game
+  header.game-header
+    router-view(name='headerLeft')
+    router-view(name='headerCenter')
+    router-view(name='headerRight')
+  router-view(name='navTab')
+  section.game-body(v-bind:class='classStep')
+    router-view
+  footer.game-footer(v-bind:class='classStep')
+    router-view(name='footer')
+
+  router-view(name='modals')

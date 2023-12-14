@@ -1,0 +1,46 @@
+
+//- This Source Code Form is subject to the terms of the Mozilla Public
+//- License, v. 2.0. If a copy of the MPL was not distributed with this
+//- file, You can obtain one at http://mozilla.org/MPL/2.0/.
+//-
+//- Copyright (c) 2021-present Kaleidos Ventures SL
+
+.project-setup
+  p.name {{ projectData.name }}
+
+  .row
+    h4 {{ t('NAME') }}
+    p.name {{ name }}
+
+  .row
+    h4 {{ t('MEASUREMENT_SCALE') }}
+    .scale.params
+      span(
+        v-for='item in scale'
+        v-bind:key='item.name'
+      ) {{ item.name }}
+
+  .row(v-if='roles.length')
+    h4 {{ t('TEAM_ROLES') }}
+    .roles.params
+      span(
+        v-for='item in roles'
+        v-bind:key='item.name'
+      ) {{ item.name }}
+
+  .row.copy
+    h4 {{ t('GAME_LINK') }}
+    p {{ t('SHARE_LINK') }}
+      span.copied(
+        v-bind:class='{ show: copied }'
+      ) {{ t('COPY_LINK') }}
+
+    input#copyLink(
+      type='text'
+      v-model='gameUrl',
+      v-on:click='copy()'
+      ref='copyLink'
+      readonly
+    )
+
+  tg-next-step

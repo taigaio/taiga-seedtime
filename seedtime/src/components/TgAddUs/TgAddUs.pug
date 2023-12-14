@@ -1,0 +1,89 @@
+
+//- This Source Code Form is subject to the terms of the Mozilla Public
+//- License, v. 2.0. If a copy of the MPL was not distributed with this
+//- file, You can obtain one at http://mozilla.org/MPL/2.0/.
+//-
+//- Copyright (c) 2021-present Kaleidos Ventures SL
+
+form.addUs(
+  v-on:submit.prevent='submit()'
+  name='addUs'
+  novalidate
+)
+  h3 {{ t('CREATE_NEW_USER_STORY') }}
+  .tabs
+    button(
+      data-test='singleButton'
+      type='button'
+      v-on:click='toggleTab()'
+      v-bind:class='{ active: single }'
+    ) {{ t('SINGLE') }}
+    button(
+      data-test='bulkButton'
+      type='button'
+      v-on:click='toggleTab()'
+      v-bind:class='{ active: bulk }'
+    ) {{ t('BULK') }}
+
+  .usForm(
+    v-if='single'
+    data-test='single'
+  )
+    fieldset
+      label(for='usTitle') {{ t('TITLE') }}
+      input#usTitle(
+        data-test='singleTitle'
+        name='usTitle'
+        type='text'
+        v-model='usTitle'
+        v-bind:placeholder='t("ADD_US_TITLE")'
+        autofocus
+      )
+    fieldset
+      label(for='usDescription') {{ t('DESCRIPTION') }}
+      textarea#usDescription(
+        data-test='singleDescription'
+        name='usDescription'
+        rows='5'
+        v-model='usDescription'
+        v-bind:placeholder='t("ADD_DESCRIPTION")'
+      )
+    input.submit(
+      v-if='!spinner'
+      type='submit'
+      data-test='submitSingle'
+      v-bind:disabled='disabledSingle'
+      v-bind:value='t("CREATE_USER_STORY")'
+    )
+  .usForm(
+    v-if='bulk'
+    data-test='bulk'
+  )
+    fieldset
+      textarea#usBulk(
+        data-test='bulkTitles'
+        name='usBulk'
+        rows='5'
+        v-model='usBulk'
+        v-bind:placeholder='t("ADD_BULK")'
+        autofocus
+      )
+    input.submit(
+      v-if='!spinner'
+      type='submit'
+      data-test='submitBulk'
+      v-bind:disabled='disabledBulk'
+      v-bind:name='t("CREATE_USER_STORY")'
+      v-bind:value=' t("CREATE_USER_STORY")'
+    )
+
+  button.close(
+    type='button'
+    v-on:click='closeModal()'
+    data-test='closeModal'
+  )
+    include ../../assets/images/discard.svg
+
+  .line(v-if='spinner')
+    span.spinner-wrap
+      include ../../assets/images/spinner.svg

@@ -1,0 +1,46 @@
+
+//- This Source Code Form is subject to the terms of the Mozilla Public
+//- License, v. 2.0. If a copy of the MPL was not distributed with this
+//- file, You can obtain one at http://mozilla.org/MPL/2.0/.
+//-
+//- Copyright (c) 2021-present Kaleidos Ventures SL
+
+.actions
+  .estimateButton
+    tg-button(
+      type='button'
+      v-bind:alt='t("ESTIMATE")'
+      v-bind:title='t("ESTIMATE")'
+      v-on:click='sendEstimation()'
+      v-bind:disabled="!getTotalPlaced"
+      v-bind:class='{ active: showModal }'
+    )
+      include ../../assets/images/estimation.svg
+
+  .zoomButton
+    tg-button(
+      type='button'
+      v-bind:alt='t("ZOOM")'
+      v-bind:title='t("ZOOM")'
+      v-on:click='toggleZoom()'
+      v-bind:class='{ active: zoomIn }'
+    )
+      include ../../assets/images/zoom.svg
+  
+  .modalConfirm(
+    v-bind:class='{showModal: showModal, hideModal: !showModal}'
+  )
+    p {{ t('ESTIMATE_OVERRIDE') }}
+    .actions
+      tg-button.cancel(
+        type='button'
+        v-bind:alt='t("CANCEL")'
+        v-bind:title='t("CANCEL")'
+        v-on:click='cancelEstimation()'
+      ) {{ t('CANCEL') }}
+      tg-button.button-green(
+        type='button'
+        v-bind:alt='t("CANCEL")'
+        v-bind:title='t("CANCEL")'
+        v-on:click='overrideEstimation()'
+      ) {{ t('ESTIMATE_SEND') }}

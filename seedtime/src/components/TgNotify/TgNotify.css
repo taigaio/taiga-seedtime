@@ -1,0 +1,69 @@
+
+/*
+This Source Code Form is subject to the terms of the Mozilla Public
+License, v. 2.0. If a copy of the MPL was not distributed with this
+file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+Copyright (c) 2021-present Kaleidos Ventures SL
+*/
+
+@import '../../assets/css/colors';
+@import '../../assets/css/animate';
+
+.notification {
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  text-align: center;
+  background-color: var(--color-white);
+  border-radius: .3rem;
+  box-shadow: 0 2px 3px 0 color(var(--color-text-modal) alpha(-50%));
+
+  &.success {
+    background-color: var(--color-green-feedback);
+  }
+
+  &.error {
+    background-color: var(--color-warning);
+  }
+
+  & .close {
+    position: absolute;
+    right: 0;
+    top: 0;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: .7rem;
+
+    & svg {
+      width: 1.2rem;
+
+      & g {
+        fill: var(--color-green);
+      }
+    }
+  }
+
+  &.error svg g {
+    fill: var(--color-red);
+  }
+
+  & h3 {
+    margin: 1.5rem 0 0;
+    font-size: 1.5rem;
+  }
+
+  & p {
+    margin: 1rem 1rem 2rem;
+    font-size: 1.12rem;
+    line-height: 1.5rem;
+  }
+
+  @nest .game & div & .shadow {
+    background-color: transparent;
+  }
+}

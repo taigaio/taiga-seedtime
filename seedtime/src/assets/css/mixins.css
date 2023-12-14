@@ -1,0 +1,47 @@
+
+/*
+This Source Code Form is subject to the terms of the Mozilla Public
+License, v. 2.0. If a copy of the MPL was not distributed with this
+file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+Copyright (c) 2021-present Kaleidos Ventures SL
+*/
+
+@import './colors';
+
+:root {
+  --limit-text: {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  --disabled: {
+    pointer-events: none;
+    color: var(--color-text-modal);
+    background-color: var(--color-mercury);
+  }
+
+  --cursor: {
+    cursor: move;
+    cursor: grab;
+  }
+}
+
+.setup {
+  display: flex;
+  flex-basis: 90%;
+  flex-direction: column;
+
+  @media screen and (min-width: 1000px) {
+    flex-basis: 75%;
+  }
+
+  @media screen and (min-width: 1300px) {
+    flex-basis: 65%;
+  }
+
+  @media screen and (min-width: 1600px) {
+    flex-basis: 55%;
+  }
+}

@@ -1,0 +1,28 @@
+
+/*
+This Source Code Form is subject to the terms of the Mozilla Public
+License, v. 2.0. If a copy of the MPL was not distributed with this
+file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+Copyright (c) 2021-present Kaleidos Ventures SL
+*/
+
+.projects {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+
+  & h2 {
+    margin: 1rem 1rem 1.5rem;
+    width: 100%;
+  }
+
+  &-project {
+    display: flex;
+    margin-bottom: 1rem;
+    margin-left: 1%;
+    margin-right: 1%;
+    min-width: 225px;
+    width: 31.3%;
+  }
+}

@@ -1,0 +1,130 @@
+
+/*
+This Source Code Form is subject to the terms of the Mozilla Public
+License, v. 2.0. If a copy of the MPL was not distributed with this
+file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+Copyright (c) 2021-present Kaleidos Ventures SL
+*/
+
+@import '../../assets/css/colors';
+@import '../../assets/css/mixins';
+@import '../../assets/css/animate';
+
+.cardFeedback {
+  left: 0;
+  position: absolute;
+  z-index: 20;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  height: 96%;
+  margin: 0;
+  padding: .5rem;
+  width: 100%;
+  font-size: .8rem;
+  line-height: 1.4;
+
+  @apply --cursor;
+
+  border: 2px solid var(--color-percent-text);
+  border-radius: 5px;
+  box-shadow: 3px 3px 4px 0 color(var(--color-black) alpha(15%));
+
+  & h4 {
+    display: flex;
+    align-items: center;
+    flex-direction: column-reverse;
+    font-size: 1.4rem;
+    text-align: center;
+
+    & svg {
+      height: 5rem;
+      width: 10.5rem;
+    }
+  }
+
+  & .col {
+    display: flex;
+
+    & .icon {
+      height: 2rem;
+      width: 2rem;
+      background-position: top left;
+      background-repeat: no-repeat;
+    }
+
+    &.right .icon {
+      transform: rotate(180deg);
+    }
+
+    &.title {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      flex-grow: 1;
+      justify-content: center;
+      padding: 0;
+
+      & p {
+        text-align: center;
+      }
+    }
+
+    &.right {
+      display: flex;
+      align-items: end;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    & button {
+      align-self: flex-end;
+      padding: 0;
+    }
+
+    & .close svg {
+      width: .87rem;
+    }
+  }
+
+  &.percent_50,
+  &.percent_100 {
+    background-color: var(--color-percent-bg);
+    border: 2px solid var(--color-percent-text);
+
+    & .close svg {
+      fill: var(--color-percent-text);
+    }
+  }
+
+  &.percent_50 .icon {
+    background-image: url('../../assets/images/feedback/percent_50_icon.svg');
+  }
+
+  &.percent_100 .icon {
+    background-image: url('../../assets/images/feedback/percent_100_icon.svg');
+  }
+
+  &.task {
+    background-color: var(--color-task-bg);
+    border: 2px solid var(--color-task-text);
+
+    & .close svg {
+      fill: var(--color-task-text);
+    }
+  }
+
+  &.breathe {
+    background-color: var(--color-breath-bg);
+    border: 2px solid var(--color-breath-text);
+
+    & .close svg {
+      fill: var(--color-breath-text);
+    }
+
+    & .icon {
+      background-image: url('../../assets/images/feedback/breathe_icon.svg');
+    }
+  }
+}

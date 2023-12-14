@@ -1,0 +1,144 @@
+
+//- This Source Code Form is subject to the terms of the Mozilla Public
+//- License, v. 2.0. If a copy of the MPL was not distributed with this
+//- file, You can obtain one at http://mozilla.org/MPL/2.0/.
+//-
+//- Copyright (c) 2021-present Kaleidos Ventures SL
+
+.estimate
+  tg-progress-bar(data-test='progressBarComponent')
+  ul.deck-actions.left
+    li
+      button(
+        type='button'
+        data-test='searchModalButton'
+        v-bind:alt='t("SEARCH")'
+        v-bind:title='t("SEARCH")'
+        v-on:click='openModal("search")'
+        v-bind:disabled='disabled'
+      )
+        include ../../assets/images/search.svg
+  .deck
+    draggable(
+      data-test='draggable'
+      v-model='scaleCards'
+      v-on:add='onAdd'
+      data-name='deck'
+      group='cards'
+      filter='.no-cards, .feedback'
+    )
+
+      tg-us-feedback.feedback(data-test='usFeedbackComponent')
+
+      tg-user-story(
+        data-test='userStoryComponent'
+        v-if='currentCard'
+        v-bind:card='currentCard'
+        v-bind:selected='true'
+        v-bind:id='currentCard.id'
+      )
+      tg-user-story.no-cards(
+        data-test='userStoryComponentEmpty'
+        v-else
+        v-bind:card='{}'
+        v-bind:selected='false'
+      )
+    .fake-deck
+    .fake-deck
+  ul.deck-actions.right
+    li
+      button(
+        type='button'
+        data-test='shuffleButton'
+        v-bind:alt='t("SHUFFLE")'
+        v-bind:title='t("SHUFFLE")'
+        v-on:click='shuffle()'
+        v-bind:disabled='disabled'
+      )
+        include ../../assets/images/shuffle.svg
+        | {{ t('SHUFFLE') }}
+    li
+      button(
+        type='button'
+        data-test='notNowButton'
+        v-bind:alt='t("NOT_NOW")'
+        v-bind:title='t("NOT_NOW")'
+        v-on:click='notNow()'
+        v-bind:disabled='disabled'
+      )
+        include ../../assets/images/not_now.svg
+        | {{ t('NOT_NOW') }}
+    li
+      button(
+        type='button'
+        data-test='discardButtonModal'
+        v-bind:alt='t("DISCARD")'
+        v-bind:title='t("DISCARD")'
+        v-on:click='openDisclamerModal()'
+        v-bind:disabled='disabled'
+      )
+        include ../../assets/images/discard.svg
+        | {{ t('DISCARD') }}
+
+      transition(name='fade')
+        .confirm-modal(
+          v-if='disclamerModal'
+          data-test='disclamerModal'
+        )
+          p {{ t('CONFIRMATION_DISCARD') }}
+          button(
+            type='button'
+            data-test='cancelButton'
+            v-bind:alt='t("CANCEL")'
+            v-bind:title='t("CANCEL")'
+            v-on:click='closeDisclamerModal()'
+          ) {{ t("CANCEL") }}
+          button.button-red(
+            type='button'
+            data-test='discardButton'
+            v-bind:alt='t("DISCARD")'
+            v-bind:title='t("DISCARD")'
+            v-on:click='discardUs()'
+          ) {{ t("DISCARD") }}
+    li
+      button(
+        v-if='hasCreatePermission()'
+        data-test='addButtonModal'
+        type='button'
+        v-bind:alt='t("ADD")'
+        v-bind:title='t("ADD")'
+        v-on:click='openAddModal()'
+      )
+        include ../../assets/images/add.svg
+        | {{ t('ADD') }}
+
+      transition(name='fade')
+        .confirm-modal.add(
+          v-if='addModal'
+          data-test='addModal'
+        )
+          button.close(
+            type='button'
+            data-test='closeButton'
+            v-bind:alt='t("CANCEL")'
+            v-bind:title='t("CANCEL")'
+            v-on:click='closeAddModal()'
+          )
+            include ../../assets/images/discard.svg
+          p {{ t('ADD_TITLE') }}
+          button(
+            type='button'
+            data-test='newButton'
+            v-bind:alt='t("NEW")'
+            v-bind:title='t("NEW")'
+            v-on:click='addUs("addUs")'
+          ) {{ t("NEW") }}
+          button(
+            type='button'
+            data-test='addButton'
+            v-bind:alt='t("EXISTING")'
+            v-bind:title='t("EXISTING")'
+            v-on:click='addUs("addExisting")'
+          ) {{ t("EXISTING") }}
+
+

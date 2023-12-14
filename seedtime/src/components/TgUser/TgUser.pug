@@ -1,0 +1,40 @@
+
+//- This Source Code Form is subject to the terms of the Mozilla Public
+//- License, v. 2.0. If a copy of the MPL was not distributed with this
+//- file, You can obtain one at http://mozilla.org/MPL/2.0/.
+//-
+//- Copyright (c) 2021-present Kaleidos Ventures SL
+
+.user
+  .username(
+    v-on:click='toggleMenu()'
+  )
+    | {{ me.username }}
+    img.user-image(
+      v-if='me.photo'
+      v-bind:alt='t("USER_PHOTO")'
+      v-bind:title='t("USER_PHOTO")'
+      v-bind:src='me.photo'
+    )
+    img.user-image(
+      v-else-if='defaultImage'
+      v-bind:alt='t("USER_PHOTO")'
+      v-bind:title='t("USER_PHOTO")'
+      v-bind:src='defaultImage.src'
+      v-bind:style='`background-color: ${defaultImage.color}`'
+    )
+  ul.menu(
+    v-bind:class='{showMenu: showMenu, hideMenu: !showMenu}'
+  )
+    li
+      router-link.rules(
+        v-bind:to='{ name: "rules" }',
+        v-bind:alt='t("RULES_TITLE")',
+        v-bind:title='t("RULES_TITLE")'
+      ) {{ t("RULES_TITLE") }}
+    li
+      router-link.logout(
+        v-bind:to='{ name: "logout" }',
+        v-bind:alt='t("LOGOUT")',
+        v-bind:title='t("LOGOUT")'
+      ) {{ t("LOGOUT") }}

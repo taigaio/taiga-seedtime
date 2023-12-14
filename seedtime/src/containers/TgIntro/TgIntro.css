@@ -1,0 +1,97 @@
+
+/*
+This Source Code Form is subject to the terms of the Mozilla Public
+License, v. 2.0. If a copy of the MPL was not distributed with this
+file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+Copyright (c) 2021-present Kaleidos Ventures SL
+*/
+
+@import '../../assets/css/colors';
+
+.intro {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 4rem 1rem 1rem;
+  width: 100%;
+  background-color: var(--color-blue);
+  color: var(--color-white);
+
+  & .wrap {
+    display: flex;
+    flex-direction: column;
+    max-width: 50rem;
+    width: 100%;
+  }
+
+  & svg#rules {
+    align-self: center;
+    margin-right: 1rem;
+    width: 7rem;
+
+    & path {
+      fill: var(--color-white);
+    }
+
+    & path:first-child {
+      fill: var(--color-blue);
+    }
+  }
+
+  & h2 {
+    display: flex;
+    font-size: 1.8rem;
+
+    & span {
+      align-self: center;
+      line-height: 2.5rem;
+    }
+  }
+
+  & ol {
+    max-width: 43rem;
+    padding-left: 10rem;
+    width: 100%;
+    font-size: 1.5rem;
+
+    & li {
+      margin-bottom: 1.5rem;
+
+      & span {
+        font-size: 1rem;
+      }
+    }
+  }
+
+  & .bg {
+    position: relative;
+    flex-grow: 3;
+    max-width: 60rem;
+    width: 100%;
+
+    & svg {
+      bottom: 0;
+      position: absolute;
+    }
+  }
+
+  & a {
+    z-index: 10;
+    align-self: center;
+    padding: 1rem 2.5rem;
+    background-color: var(--color-green);
+    color: var(--color-white);
+  }
+}
+
+@media (max-width: 750px) {
+  .intro {
+    padding: 1rem 1rem 3rem;
+
+    & ol {
+      margin-top: 2rem;
+      padding-left: 3rem;
+    }
+  }
+}

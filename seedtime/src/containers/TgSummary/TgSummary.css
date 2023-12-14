@@ -1,0 +1,181 @@
+
+/*
+This Source Code Form is subject to the terms of the Mozilla Public
+License, v. 2.0. If a copy of the MPL was not distributed with this
+file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+Copyright (c) 2021-present Kaleidos Ventures SL
+*/
+
+@import '../../assets/css/colors';
+
+.recap {
+  display: flex;
+  flex-basis: 70%;
+  flex-direction: column;
+
+  & .block {
+    padding: 1.5rem 0;
+  }
+
+  & .graphic {
+    display: flex;
+  }
+
+  & .header {
+    text-align: center;
+
+    &-step {
+      font-size: .8rem;
+      color: var(--color-text-modal);
+      text-transform: uppercase;
+    }
+
+    &-title {
+      padding: 1rem 0;
+      font-size: 2rem;
+    }
+
+    &-subtitle {
+      font-size: 1.2rem;
+
+      & .button {
+        display: inline;
+      }
+    }
+  }
+
+  & .caption {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-size: .9rem;
+
+    & .title {
+      padding: 0 .5rem;
+      font-weight: 800;
+      text-align: right;
+
+      &:first-child {
+        margin-top: 1rem;
+      }
+    }
+  }
+
+  & .graph {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+
+    & .row {
+      box-sizing: border-box;
+      display: flex;
+
+      & .cell {
+        position: relative;
+        flex: 1;
+        margin: 0 .5rem;
+        padding: 1rem .5rem;
+        font-weight: bold;
+        text-align: center;
+        color: var(--color-text-green-dark);
+
+        &:last-child {
+          border-right: none;
+        }
+
+        & .value {
+          position: relative;
+          z-index: 2;
+        }
+
+        & .progress {
+          left: 0;
+          position: absolute;
+          bottom: 0;
+          z-index: 1;
+          width: 100%;
+        }
+      }
+    }
+
+    & .scale {
+      margin-bottom: .3rem;
+
+      & .cell {
+        padding: 0 0 .5rem;
+        border-bottom: 4px solid color(var(--color-text-modal) alpha(25%));
+
+        & span {
+          margin-left: .25rem;
+          font-size: .87rem;
+          font-weight: normal;
+          color: var(--color-green-second-level);
+        }
+      }
+    }
+
+    & .cards {
+      height: 5rem;
+
+      & .progress {
+        top: 0;
+        background-color: var(--color-active);
+      }
+    }
+
+    & .relative {
+      height: 5rem;
+      margin-top: .2rem;
+      border-bottom: 1px solid var(--color-green-second-level);
+
+      & .progress {
+        background-color: var(--color-green-second-level);
+      }
+    }
+  }
+
+  & .copy {
+    border-top: 1px solid var(--color-mercury);
+
+    & h4 {
+      font-weight: bold;
+    }
+
+    & p {
+      position: relative;
+      margin: 1rem 0;
+
+      line-height: 1.3rem;
+      text-align: left;
+
+      & .copied {
+        position: absolute;
+        right: 0;
+        display: none;
+        bottom: 0;
+        margin-bottom: 0;
+        margin-top: .5rem;
+        padding: .5rem;
+
+        color: var(--color-black);
+        font-weight: 400;
+
+        background-color: var(--color-green-feedback);
+
+        transition: opacity 300ms linear;
+
+        &.show {
+          display: block;
+        }
+      }
+
+      & input[type='text'] {
+        &[readonly] {
+          padding-right: 2.5rem;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}

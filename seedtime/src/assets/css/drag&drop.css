@@ -1,0 +1,158 @@
+
+/*
+This Source Code Form is subject to the terms of the Mozilla Public
+License, v. 2.0. If a copy of the MPL was not distributed with this
+file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+Copyright (c) 2021-present Kaleidos Ventures SL
+*/
+
+@import 'mixins';
+
+.sortable-chosen {
+  & .text {
+    font-size: .8rem;
+
+    &.blocked {
+      color: color(var(--color-red) alpha(70%));
+    }
+
+    & .id {
+      margin-right: .3rem;
+      font-size: .8rem;
+    }
+  }
+
+  & .description {
+    display: none;
+  }
+
+  &.us {
+    margin-bottom: 1rem;
+    padding: .5rem;
+    line-height: 1.4;
+    background-color: var(--color-white);
+    border-radius: 5px;
+    box-shadow: 2px 2px 0 0 color(var(--color-text-modal) alpha(-50%));
+
+    & .text {
+      @apply --limit-text;
+    }
+
+    & button {
+      display: none;
+    }
+  }
+
+  @nest .estimate &.card:not(.selected) {
+    position: absolute;
+    z-index: 12;
+    height: 96%;
+    margin: 0;
+    padding: 1rem;
+    line-height: 1.4;
+    border: 1px solid var(--color-text-modal);
+    box-shadow: none;
+
+    & .text {
+      font-size: 1rem;
+      line-height: 1.3rem;
+      text-overflow: ellipsis;
+
+      & .id {
+        margin-right: .5rem;
+        font-size: 1.5rem;
+      }
+    }
+
+    & .description {
+      display: block;
+      flex-shrink: 4;
+      margin-bottom: .5rem;
+      max-height: 6rem;
+      overflow: hidden;
+      font-size: .7rem;
+    }
+
+    & .actions {
+      align-items: flex-end;
+    }
+  }
+
+  @nest .estimate &.card.selected {
+    & .description {
+      display: block;
+    }
+  }
+
+  @nest .estimate &.us {
+    display: none;
+  }
+
+  @nest .scale &.card.selected {
+    height: auto;
+    margin-bottom: 1rem;
+    padding: .5rem;
+    font-size: .8rem;
+    line-height: 1.1rem;
+
+    & .text {
+      margin-bottom: 0;
+      font-size: .8rem;
+
+      & .id {
+        font-size: .8rem;
+      }
+    }
+
+    & .description,
+    & .blocked-icon {
+      display: none;
+    }
+  }
+
+  @nest .search-us &.us {
+    display: block;
+    margin-bottom: 0;
+    max-width: 100%;
+    border: none;
+    border-bottom: 1px solid var(--color-mercury);
+    box-shadow: none;
+
+    & .text {
+      font-size: .9rem;
+
+      & .id {
+        font-size: .9rem;
+      }
+
+      &.blocked {
+        color: color(var(--color-red) alpha(70%));
+      }
+    }
+  }
+
+  @nest .search-us &.card:not(.selected) {
+    margin-bottom: 0;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--color-mercury);
+    box-shadow: none;
+
+    & .title {
+      margin: 0;
+    }
+
+    & .text,
+    & .id {
+      font-size: .9rem;
+    }
+
+    & .actions {
+      display: none;
+    }
+  }
+
+  @nest .search-us &.card.selected {
+    display: none;
+  }
+}

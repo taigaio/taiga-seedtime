@@ -1,0 +1,117 @@
+
+/*
+This Source Code Form is subject to the terms of the Mozilla Public
+License, v. 2.0. If a copy of the MPL was not distributed with this
+file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+Copyright (c) 2021-present Kaleidos Ventures SL
+*/
+
+@import '../../assets/css/colors';
+@import '../../assets/css/mixins';
+@import '../../assets/css/animate';
+
+.addUs {
+  position: relative;
+  margin: 0 auto;
+  padding: 1.5rem;
+  width: 40rem;
+  background-color: var(--color-white);
+
+  & h3 {
+    margin-bottom: 2rem;
+    font-size: 1.5rem;
+    text-align: center;
+  }
+
+  & fieldset {
+    margin: 1rem 0;
+
+    & label {
+      display: block;
+      margin-bottom: .5rem;
+      font-size: .87rem;
+      font-weight: 600;
+    }
+
+    & textarea {
+      resize: none;
+    }
+  }
+
+  & .tabs {
+    display: flex;
+    justify-content: center;
+
+    & button {
+      padding-bottom: .2rem;
+      width: 10rem;
+      font-size: .87rem;
+      font-weight: 600;
+      text-align: center;
+      border-bottom: 3px solid;
+      color: var(--color-mercury);
+
+      &.active {
+        color: var(--color-green-second-level);
+      }
+    }
+  }
+
+  & .submit {
+    display: block;
+
+    padding: 1rem;
+    width: 100%;
+
+    font-size: 1rem;
+    text-align: center;
+    background-color: var(--color-green);
+    color: var(--color-white);
+    box-shadow: 3px 3px 0 -1px color(var(--color-text-modal));
+
+    transition: background-color .16s linear;
+
+    &:hover {
+      background-color: color(var(--color-green) blackness(40%));
+    }
+
+    &:disabled {
+      @apply --disabled;
+    }
+  }
+
+  & .close {
+    position: absolute;
+    right: .5rem;
+    top: .5rem;
+    height: 2rem;
+    color: var(--color-white);
+    width: 2rem;
+
+    /*
+      pointer-events: none;
+    */
+
+    & svg {
+      fill: var(--color-white);
+    }
+  }
+
+  & svg {
+    height: auto;
+    margin-right: .5rem;
+    width: 1rem;
+    fill: var(--color-text-modal);
+  }
+
+  & .spinner-wrap {
+    display: flex;
+    justify-content: center;
+    margin: 1rem 0 0;
+
+    & svg {
+      width: 3rem;
+    }
+  }
+}
