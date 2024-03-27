@@ -9,11 +9,11 @@
   "license": "MPL-2",
   "repository": {
     "type": "git",
-    "url": "git@github.com:kaleidos-ventures/taiga-seedtime.git"
+    "url": "git@github.com:taigaio/taiga-seedtime.git"
   },
-  "homepage": "https://github.com/kaleidos-ventures/taiga-seedtime/tree/main#README",
+  "homepage": "https://github.com/taigaio/taiga-seedtime/tree/main#README",
   "bugs": {
-    "url": "https://github.com/kaleidos-ventures/taiga-seedtime/tree/main#README"
+    "url": "https://github.com/taigaio/taiga-seedtime/tree/main#README"
   },
   "engines": {
     "node": ">= 16.19.1",
