@@ -1,6 +1,6 @@
 # Taiga Seedtime
 
-Taiga Seedtime is an agile estimation solution linked to Taiga. Taiga users can load their projects and estimate the relative weight of userSories chosen in a very fast way with this tool.
+Taiga Seedtime is an agile estimation solution linked to Taiga. Taiga users can load their projects and estimate the relative weight of user stories chosen in a very fast way with this tool.
 
 ## Installation
 
